@@ -67,6 +67,7 @@ public class EasyOctober {
         return res;
     }
 
+    //Not working yet
     public static int maxProfit(int[] prices) {
         int maxProfit = 0;
 
@@ -87,7 +88,6 @@ public class EasyOctober {
             maxProfit += currentProfit;
 
         }
-
         return maxProfit;
     }
 
