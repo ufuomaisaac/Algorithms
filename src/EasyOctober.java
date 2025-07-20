@@ -74,8 +74,6 @@ public class EasyOctober {
         int currentProfit = 0;
         for(int i = 1; i < prices.length; i++){
 
-            int currentPrice = prices[i];
-
             if (prices[i] > prices[i - 1]) {
                 currentProfit = prices[i] - prices[i - 1];
                 maxProfit += currentProfit;
