@@ -3,8 +3,7 @@
 public class Main {
     public static void main(String[] args) {
 
-       int value =  EasyOctober.maxProfit(new int[]{10,6,4,1,8,1});
-
+       int value =  EasyOctober.firstMissingPositive(new int[]{10,6,4,1,8,1});
        System.out.println(value);
 
 
