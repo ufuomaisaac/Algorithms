@@ -82,47 +82,33 @@ public class EasyOctober {
         return maxProfit;
     }
 
+
+
+    // LeetCode 41.
+    // First Missing Positive
     public static int firstMissingPositive(int[] nums) {
-        int i = 0;
-        while(i < nums.length){
-            if(nums[i] > 0 && nums[i] < nums.length){
-                int index = nums[i] - 1;
-                if(nums[i] != nums[index]){
-                    int temp = nums[i];
-                    nums[i] = nums[index];
-                    nums[index] = temp;
-                }
-                else{
-                    i++;
-                }
-            }else{
-                i++;
+        int n = nums.length;
+
+        for (int i = 0; i < n; i++) {
+            if (nums[i] <= 0 || nums[i] > n) {
+                nums[i] = n + 1;
             }
         }
-        for(int j = 1; j <= nums.length; j++){
-            if(nums[j - 1] != j){
-                return j;
+
+        for (int i = 0; i < n; i++) {
+            int val = Math.abs(nums[i]);
+            if (val <= n) {
+                nums[val - 1] = -Math.abs(nums[val - 1]);
             }
         }
-        return nums[nums.length - 1] + 1;
+
+        for (int i = 0; i < n; i++) {
+            if (nums[i] > 0) {
+                return i + 1;
+            }
+        }
+        return n + 1;
     }
 
-    class Solution {
-        public int firstMissingPositive(int[] nums) {
-            int[] filteredNums = Arrays.stream(nums).filter(n -> n > 0).toArray();
 
-            Arrays.sort(filteredNums);
-
-            int target = 1;
-            for (int n : filteredNums) {
-                if (n == target) {
-                    target++;
-                } else if (n > target) {
-                    return target;
-                }
-            }
-
-            return target;
-        }
-    }
 }
