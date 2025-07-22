@@ -3,6 +3,7 @@ import java.util.Arrays;
 public class EasyOctober {
 
 
+
     //LEETCODE
     //1962. Remove Stones to Minimize the Total
     //My approach is to apply the rule to the biggest integer in the array removing more value from the largest integer
@@ -27,6 +28,7 @@ public class EasyOctober {
     }
 
 
+
     //LEETCODE
     //189. Rotate Array
     public void rotate(int[] nums, int k) {
@@ -35,7 +37,6 @@ public class EasyOctober {
         reverse(nums, 0, k - 1);
         reverse(nums, k, nums.length - 1);
     }
-
     public void reverse(int[] nums, int start, int end) {
         while (start < end) {
             int temp = nums[start];
@@ -45,6 +46,7 @@ public class EasyOctober {
             end--;
         }
     }
+
 
 
     // Leetcode 238
@@ -64,6 +66,7 @@ public class EasyOctober {
         }
         return res;
     }
+
 
 
     // Leetcode 122.  Max Profit
@@ -109,6 +112,8 @@ public class EasyOctober {
         }
         return n + 1;
     }
+
+
 
     // LeetCode 2348.
     // Number of Zero-Filled Subarrays
