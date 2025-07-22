@@ -120,18 +120,13 @@ public class EasyOctober {
     public static long zeroFilledSubarray(int[] nums) {
 
         long result = 0;
-
         for(int i = 0; i < nums.length; i++) {
-
             if(nums[i] == 0){
-
                 result += 1;
 
                 for(int j = i + 1; j < nums.length; j++) {
-
                     if (nums[j] == 0) {
                         result += 1;
-
                     } else
                         break;
                 }
@@ -139,6 +134,4 @@ public class EasyOctober {
         }
         return result;
     }
-
-
 }
