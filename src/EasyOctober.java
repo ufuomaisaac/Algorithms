@@ -110,6 +110,8 @@ public class EasyOctober {
         return n + 1;
     }
 
+    // LeetCode 2348.
+    // Number of Zero-Filled Subarrays
     public static long zeroFilledSubarray(int[] nums) {
 
         long result = 0;
