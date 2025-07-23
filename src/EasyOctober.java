@@ -134,4 +134,22 @@ public class EasyOctober {
         }
         return result;
     }
+
+
+    public static boolean increasingTriplet(int[] nums) {
+
+        boolean isIncreasingTripletSequence = false;
+        for(int i = 0; i < nums.length - 2; i++) {
+
+            if (nums.length - i == 2 || nums.length <= 2) {
+                break;
+            }
+            if(nums[i + 1] > nums [i] && nums[i + 2] > nums[i - 1]) {
+                isIncreasingTripletSequence =  true;
+            }
+        }
+
+        return isIncreasingTripletSequence;
+
+    }
 }

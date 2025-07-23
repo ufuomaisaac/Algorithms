@@ -3,7 +3,7 @@
 public class Main {
     public static void main(String[] args) {
 
-       long value =  EasyOctober.zeroFilledSubarray(new int[]{10,0,4,1,8,1});
+       boolean value =  EasyOctober.increasingTriplet(new int[]{10,0,4,1,8,1});
        System.out.println(value);
 
     }
