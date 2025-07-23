@@ -136,6 +136,9 @@ public class EasyOctober {
     }
 
 
+
+    // Leetcode 334.
+    // Increasing Triplet Subsequence
     public static boolean increasingTriplet(int[] nums) {
 
         boolean isIncreasingTripletSequence = false;
