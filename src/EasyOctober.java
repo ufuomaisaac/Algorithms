@@ -144,7 +144,7 @@ public class EasyOctober {
             if (nums.length - i == 2 || nums.length <= 2) {
                 break;
             }
-            if(nums[i + 1] > nums [i] && nums[i + 2] > nums[i - 1]) {
+            if(nums[i + 1] > nums [i] && nums[i + 2] > nums[i + 1]) {
                 isIncreasingTripletSequence =  true;
             }
         }
