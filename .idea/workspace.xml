@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="fb96560a-f85b-47b7-a62f-cc2e196dee7c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyOctober.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyOctober.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Algorithms.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Algorithms.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,39 +84,47 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/EasyOctober.java</url>
-          <line>143</line>
-          <option name="timeStamp" value="1" />
+          <url>file://$PROJECT_DIR$/src/Algorithms.java</url>
+          <line>157</line>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/EasyOctober.java</url>
-          <line>144</line>
-          <option name="timeStamp" value="2" />
+          <url>file://$PROJECT_DIR$/src/Algorithms.java</url>
+          <line>158</line>
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/EasyOctober.java</url>
-          <line>146</line>
-          <option name="timeStamp" value="4" />
+          <url>file://$PROJECT_DIR$/src/Algorithms.java</url>
+          <line>159</line>
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/EasyOctober.java</url>
-          <line>147</line>
-          <option name="timeStamp" value="5" />
+          <url>file://$PROJECT_DIR$/src/Algorithms.java</url>
+          <line>160</line>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/EasyOctober.java</url>
-          <line>149</line>
-          <option name="timeStamp" value="6" />
+          <url>file://$PROJECT_DIR$/src/Algorithms.java</url>
+          <line>161</line>
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/EasyOctober.java</url>
-          <line>150</line>
-          <option name="timeStamp" value="7" />
+          <url>file://$PROJECT_DIR$/src/Algorithms.java</url>
+          <line>162</line>
+          <properties>
+            <option name="lambda-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/EasyOctober.java</url>
-          <line>154</line>
-          <option name="timeStamp" value="9" />
+          <url>file://$PROJECT_DIR$/src/Algorithms.java</url>
+          <line>163</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Algorithms.java</url>
+          <line>164</line>
+          <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
