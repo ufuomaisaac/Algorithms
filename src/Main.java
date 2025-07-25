@@ -3,7 +3,7 @@
 public class Main {
     public static void main(String[] args) {
 
-       boolean value =  EasyOctober.increasingTriplet(new int[]{10,0,4,1,8,1});
+       boolean value =  Algorithms.increasingTriplet(new int[]{10,0,4,1,8,1});
        System.out.println(value);
 
     }
