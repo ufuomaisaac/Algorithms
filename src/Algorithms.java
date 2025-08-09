@@ -147,7 +147,6 @@ public class Algorithms {
             else if(n <= max2) max2 = n;
             else return true;
         }
-
         return false;
     }
 }
