@@ -149,7 +149,8 @@ public class Algorithms {
         return false;
     }
 
-
+    // Leetcode 6
+    // Zigzag Conversion
     public static String convert(String s, int numRows) {
         List<List<Character>> mat = new ArrayList<>();
         for (int r = 0; r < numRows; r++) {
