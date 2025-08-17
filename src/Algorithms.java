@@ -3,8 +3,6 @@ import java.util.List;
 
 public class Algorithms {
 
-
-
     //LEETCODE
     //1962. Remove Stones to Minimize the Total
     //My approach is to apply the rule to the biggest integer in the array removing more value from the largest integer
@@ -126,7 +124,7 @@ public class Algorithms {
                 result += 1;
 
                 for(int j = i + 1; j < nums.length; j++) {
-                    if (0[j] == 0) {
+                    if (nums[j] == 0) {
                         result += 1;
                     } else
                         break;
@@ -175,6 +173,23 @@ public class Algorithms {
                 ans += mat.get(i).get(j);
         }
         return ans;
+    }
+
+
+    public static String reverseWords(String s) {
+
+        String[] words = s.trim().split("\\s+");
+
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = words.length - 1; i >= 0; i--) {
+            sb.append(words[i]);
+
+            if (i > 0) {
+                sb.append(" ");
+            }
+        }
+        return sb.toString();
     }
 
 }

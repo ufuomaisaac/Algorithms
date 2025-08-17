@@ -3,7 +3,7 @@
 public class Main {
     public static void main(String[] args) {
 
-       boolean value =  Algorithms.increasingTriplett(new int[]{10,0,4,1,0,8});
+       String value =  Algorithms.reverseWords("Hello World  ");
        System.out.println(value);
 
     }
