@@ -24,6 +24,9 @@ public class HashTables {
 
 }
 
+
+// Leetcode 535
+// Encode and Decode TinyUrl
 class Codec {
 
     private Map<String, String > map = new HashMap<>();
@@ -34,7 +37,6 @@ class Codec {
         String key = String.valueOf(counter++);
         map.put(key, longUrl);
         return BASE_URL+key;
-
     }
 
     public String decode(String shortUrl) {
