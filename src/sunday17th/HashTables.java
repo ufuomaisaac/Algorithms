@@ -21,4 +21,25 @@ public class HashTables {
 
         return new ArrayList<>(map.values());
     }
+
 }
+
+class Codec {
+
+    private Map<String, String > map = new HashMap<>();
+    private static String BASE_URL = "http://tinyurl.com/";
+    private int counter = 1;
+
+    public String encode(String longUrl) {
+        String key = String.valueOf(counter++);
+        map.put(key, longUrl);
+        return BASE_URL+key;
+
+    }
+
+    public String decode(String shortUrl) {
+        String key = shortUrl.replace(BASE_URL, "");
+        return map.get(key);
+    }
+}
+
