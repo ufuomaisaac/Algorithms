@@ -22,6 +22,31 @@ public class HashTables {
         return new ArrayList<>(map.values());
     }
 
+    //568666
+    public static String reOrganizeString(String str) {
+        int[] hash = new int[26];
+        for (int i = 0; i < str.length(); i++) {
+            hash[str.charAt(i)]++;
+        }
+
+        int max = 0, letter = 0;
+        for (int i = 0; i < str.length(); i++) {
+            if(hash[i] > max) {
+                max = hash[i];
+                letter = i;
+            }
+        }
+
+        if (max > str.length() + 1 / 2 ) {
+            return "";
+        }
+
+
+
+        return
+
+    }
+
 }
 
 
