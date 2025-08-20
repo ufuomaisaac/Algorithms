@@ -66,6 +66,36 @@ public class HashTables {
         return String.valueOf(res);
     }
 
+
+    // Longest consecutive number
+    // Leetcode 128
+    public int longestConsecutive(int[] nums) {
+        HashSet<Integer> set = new HashSet<>();
+        for (int num : nums) {
+            set.add(num);
+        }
+
+        int longest = 0;
+
+        for (int num : set) {
+            // Only start counting if 'num' is the beginning of a sequence
+            if (!set.contains(num - 1)) {
+                int currNum = num;
+                int count = 1;
+
+                // Count consecutive numbers
+                while (set.contains(currNum + 1)) {
+                    currNum++;
+                    count++;
+                }
+
+                // Update the maximum length
+                longest = Math.max(longest, count);
+            }
+        }
+        return longest;
+    }
+
 }
 
 
