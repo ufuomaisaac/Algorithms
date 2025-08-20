@@ -42,9 +42,27 @@ public class HashTables {
         }
 
 
+        char[] res = new char[str.length()];
+        int idx = 0;
 
-        return "";
+        while (hash[letter] > 0) {
+            res[idx] = (char) (letter + 'a');
+            idx += 2;
+            hash[letter]--;
+        }
 
+        for (int i = 0; i < hash.length; i++) {
+            while (hash[i] > 0) {
+                if (idx >= res.length) {
+                    idx = 1;
+                }
+                res[idx] = (char) (i + 'a');
+                idx += 2;
+                hash[i]--;
+            }
+        }
+
+        return String.valueOf(res);
     }
 
 }
