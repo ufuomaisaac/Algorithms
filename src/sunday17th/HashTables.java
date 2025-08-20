@@ -23,17 +23,19 @@ public class HashTables {
     }
 
     //568666
+    // Leetcode 767
+    // Reorganizing String
     public static String reOrganizeString(String str) {
         int[] hash = new int[26];
         for (int i = 0; i < str.length(); i++) {
             hash[str.charAt(i)]++;
         }
 
-        int max = 0, letter = 0;
+        int max = 0, letterIdx = 0;
         for (int i = 0; i < str.length(); i++) {
             if(hash[i] > max) {
                 max = hash[i];
-                letter = i;
+                letterIdx = i;
             }
         }
 
@@ -41,14 +43,13 @@ public class HashTables {
             return "";
         }
 
-
         char[] res = new char[str.length()];
         int idx = 0;
 
-        while (hash[letter] > 0) {
-            res[idx] = (char) (letter + 'a');
+        while (hash[letterIdx] > 0) {
+            res[idx] = (char) (letterIdx + 'a');
             idx += 2;
-            hash[letter]--;
+            hash[letterIdx]--;
         }
 
         for (int i = 0; i < hash.length; i++) {
