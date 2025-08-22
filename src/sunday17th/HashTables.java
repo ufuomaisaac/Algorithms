@@ -96,6 +96,16 @@ public class HashTables {
         return longest;
     }
 
+
+    //I do not understand the process, come back to it
+    // Split Array into consecutive Subsequences
+    // Leetcode 659
+    class Solution {
+        public boolean isPossible(int[] nums) {
+            return false;
+        }
+    }
+
 }
 
 
