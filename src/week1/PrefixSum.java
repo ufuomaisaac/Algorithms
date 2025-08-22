@@ -1,4 +1,4 @@
-package sunday17th;
+package week1;
 
 public class PrefixSum {
 }
