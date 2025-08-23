@@ -98,6 +98,28 @@ public class TwoPointers {
 
 
 
+    // Trapping Rain water
+    // Leetcode 46
+    public int trap(int[] h) {
+        int leftIndex = 0;
+        int rightIndex = h.length - 1;
+        int result = 0;
+
+        int leftMax = Integer.MIN_VALUE;
+        int rightMax = Integer.MIN_VALUE;
+
+        while(leftIndex < rightIndex) {
+            leftMax = Math.max(leftMax, h[leftIndex]);
+            rightMax = Math.max(rightMax, h[rightIndex]);
+
+            result += leftMax < rightMax? leftMax - h[leftIndex++] : rightMax - h[rightIndex--];
+        }
+
+        return result;
+    }
+
+
+
 }
 
 
