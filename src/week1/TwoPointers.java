@@ -25,6 +25,30 @@ public class TwoPointers {
     }
 
 
+    // Container with the most water
+    // Leetcode 11
+    public int maxArea(int[] height) {
+
+        int leftIndex = 0;
+        int rightIndex = height.length - 1;
+        int area = 0;
+
+        while(leftIndex < rightIndex) {
+
+            int minHeight = Math.min(height[leftIndex], height[rightIndex]);
+
+            area = Math.max(minHeight * (rightIndex - leftIndex), area);
+
+            if(height[leftIndex] < height[rightIndex]) {
+                leftIndex++;
+            } else {
+                rightIndex--;
+            }
+
+        }
+        return area;
+    }
+
 
 
 }
