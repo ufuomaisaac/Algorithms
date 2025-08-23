@@ -1,6 +1,9 @@
 package week1;
 
 public class TwoPointers {
+
+    // Two Sum II - Input Array Is Sorted
+    // Leetcode 167
     public int[] twoSum(int[] numbers, int target) {
 
         int leftIndex = 0;
@@ -20,6 +23,9 @@ public class TwoPointers {
 
         return new int[]{};
     }
+
+
+
 
 }
 
