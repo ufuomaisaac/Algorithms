@@ -33,31 +33,33 @@ public class PrefixSum {
         return count;
     }
 
+
+
     //If two prefix sums have the same remainder when divided by k,
     //then the subarray between them is divisible by k.
     public int subarraysDivByK(int[] nums, int k) {
 
-        HashMap<Integer, Integer> subNum = new HashMap<>();
-        subNum.put(0, 1);
+        HashMap<Integer, Integer> remainderCount = new HashMap<>();
+        remainderCount.put(0, 1);
 
         int count = 0;
-        int total = 0;
+        int prefixSum  = 0;
 
         for (int n : nums) {
-            total += n;
+            prefixSum += n;
 
-            if(subNum.containsKey(total / k)) {
-                count += subNum.get(total / k);
-            }
-
+            // Adjust negative remainders to be positive
+            int remainder = ((prefixSum % k) + k) % k;
 
 
+           /* if (remainder < 0) {
+                remainder += k;
+            }*/
+            count += remainderCount.getOrDefault(remainder, 0);
+
+            remainderCount.put(remainder, remainderCount.getOrDefault(remainder, 0) + 1);
         }
-
-
+        return count;
 
     }
-
-
-
 }
