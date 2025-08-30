@@ -3,6 +3,9 @@ package week1;
 import java.util.HashMap;
 
 public class PrefixSum {
+
+    // Leetcode 560
+    // Subarray Sum Equals K
     public int subarraySum(int[] nums, int k) {
         // HashMap stores: (prefix sum -> number of times it occurred)
         HashMap<Integer, Integer> subNum = new HashMap<>();
@@ -28,6 +31,11 @@ public class PrefixSum {
         }
 
         return count;
+    }
+
+
+    public int subarraysDivByK(int[] nums, int k) {
+
     }
 
 
