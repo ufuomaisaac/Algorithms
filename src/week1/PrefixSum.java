@@ -34,16 +34,17 @@ public class PrefixSum {
     }
 
 
-
     //If two prefix sums have the same remainder when divided by k,
     //then the subarray between them is divisible by k.
+    // Leetcode 974.
+    // Subarray Sums Divisible by K
     public int subarraysDivByK(int[] nums, int k) {
 
         HashMap<Integer, Integer> remainderCount = new HashMap<>();
         remainderCount.put(0, 1);
 
         int count = 0;
-        int prefixSum  = 0;
+        int prefixSum = 0;
 
         for (int n : nums) {
             prefixSum += n;
@@ -60,6 +61,36 @@ public class PrefixSum {
             remainderCount.put(remainder, remainderCount.getOrDefault(remainder, 0) + 1);
         }
         return count;
+
+    }
+
+
+    // Leetcode 523.
+    // Continuous Subarray Sum
+    public boolean checkSubarraySum(int[] nums, int k) {
+        HashMap<Integer, Integer> remainderIndex = new HashMap<>();
+        remainderIndex.put(0, -1); // Base case: prefix sum divisible by k before start
+
+        int prefixSum = 0;
+
+        for (int i = 0; i < nums.length; i++) {
+            prefixSum += nums[i];
+            int remainder = prefixSum % k;
+
+            // Handle negative remainders in Java
+            if (remainder < 0) {
+                remainder += k;
+            }
+
+            if (remainderIndex.containsKey(remainder)) {
+                if (i - remainderIndex.get(remainder) >= 2) {
+                    return true;
+                }
+            } else {
+                remainderIndex.put(remainder, i);
+            }
+        }
+        return false;
 
     }
 }
