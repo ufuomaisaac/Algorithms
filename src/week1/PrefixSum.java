@@ -1,6 +1,7 @@
 package week1;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class PrefixSum {
 
@@ -91,6 +92,32 @@ public class PrefixSum {
             }
         }
         return false;
+    }
 
+
+    // Leetcode 525.
+    // Contiguous Array
+    public int findMaxLength(int[] nums) {
+        int maxLength = 0;
+        int prefixSum = 0;  // Keeps track of balance between 1s and 0s
+        Map<Integer, Integer> prefixIndex = new HashMap<>();
+
+        // Initialize with prefixSum = 0 at index -1
+        prefixIndex.put(0, -1);
+
+        for (int i = 0; i < nums.length; i++) {
+            // Treat 0 as -1, and 1 as +1
+            prefixSum += (nums[i] == 1) ? 1 : -1;
+
+            if (prefixIndex.containsKey(prefixSum)) {
+                // Found a subarray with equal number of 0s and 1s
+                maxLength = Math.max(maxLength, i - prefixIndex.get(prefixSum));
+            } else {
+                // Store the first index where this prefixSum occurs
+                prefixIndex.put(prefixSum, i);
+            }
+        }
+
+        return maxLength;
     }
 }
