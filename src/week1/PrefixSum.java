@@ -98,12 +98,12 @@ public class PrefixSum {
     // Leetcode 525.
     // Contiguous Array
     public int findMaxLength(int[] nums) {
+
+        Map<Integer, Integer> prefixIndex = new HashMap<>();
+        prefixIndex.put(0, -1); // Initialize with prefixSum = 0 at index -1
+
         int maxLength = 0;
         int prefixSum = 0;  // Keeps track of balance between 1s and 0s
-        Map<Integer, Integer> prefixIndex = new HashMap<>();
-
-        // Initialize with prefixSum = 0 at index -1
-        prefixIndex.put(0, -1);
 
         for (int i = 0; i < nums.length; i++) {
             // Treat 0 as -1, and 1 as +1
