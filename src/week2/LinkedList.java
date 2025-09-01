@@ -1,5 +1,4 @@
 package week2;
 
-public class LinkedList
-{
+public class LinkedList {
 }
