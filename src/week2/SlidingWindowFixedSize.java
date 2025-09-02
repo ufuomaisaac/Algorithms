@@ -5,44 +5,46 @@ import java.util.List;
 
 public class SlidingWindowFixedSize {
 
+    // Leetcode 438
+    // Find All Anagrams in a String
     public List<Integer> findAnagrams(String s, String p) {
-        int sLength = s.length(), pLength = p.length();
-        List<Integer> anagramIndices = new ArrayList<>();
-        if (sLength < pLength) return anagramIndices;
+        int n = s.length(), m = p.length();
+        List<Integer> result = new ArrayList<>();
+        if (n < m) return result;
 
-        int[] pFreq = new int[26];      // frequency of chars in p
-        int[] windowFreq = new int[26]; // frequency of chars in current window
+        int[] target = new int[26]; // frequency of chars in p
+        int[] window = new int[26]; // frequency of chars in current window
 
         // Count frequency of characters in p
         for (char c : p.toCharArray()) {
-            pFreq[c - 'a']++;
+            target[c - 'a']++;
         }
 
-        int unmatchedCharTypes = 0; // number of characters whose frequencies don't match
-        for (int count : pFreq) {
-            if (count > 0) unmatchedCharTypes++;
+        int diff = 0;
+        for (int count : target) {
+            if (count > 0) diff++;
         }
 
-        for (int i = 0; i < sLength; i++) {
-            int addedChar = s.charAt(i) - 'a';
+        for (int i = 0; i < n; i++) {
+            int add = s.charAt(i) - 'a';
 
-            // Add new character into the window
-            if (windowFreq[addedChar]++ == pFreq[addedChar]) unmatchedCharTypes++;
-            else if (windowFreq[addedChar] == pFreq[addedChar]) unmatchedCharTypes--;
+            // Add new char into the window
+            if (window[add]++ == target[add]) diff++;
+            else if (window[add] == target[add]) diff--;
 
-            // Remove old character when window size exceeds pLength
-            if (i >= pLength) {
-                int removedChar = s.charAt(i - pLength) - 'a';
-                if (windowFreq[removedChar]-- == pFreq[removedChar]) unmatchedCharTypes++;
-                else if (windowFreq[removedChar] == pFreq[removedChar]) unmatchedCharTypes--;
+            // Remove old char if window is too big
+            if (i >= m) {
+                int rem = s.charAt(i - m) - 'a';
+                if (window[rem]-- == target[rem]) diff++;
+                else if (window[rem] == target[rem]) diff--;
             }
 
-            // If all frequencies match, it's an anagram
-            if (unmatchedCharTypes == 0) {
-                anagramIndices.add(i - pLength + 1);
+            // If diff == 0, we found an anagram
+            if (diff == 0) {
+                result.add(i - m + 1);
             }
         }
 
-        return anagramIndices;
+        return result;
     }
 }
