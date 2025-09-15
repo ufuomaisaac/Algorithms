@@ -1,9 +1,7 @@
 package week2;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
 
 public class SlidingWindowFixedSize {
 
@@ -153,8 +151,108 @@ public class SlidingWindowFixedSize {
         }
         return maxSum;
     }
-
-
-
-
 }
+
+
+
+
+class minimumOperation {
+    public static int findMinimumOperations(List<List<Integer>> bookshelf, int k) {
+        int n = bookshelf.size();
+        if (n == 0) return 0;
+        int m = bookshelf.get(0).size();
+
+        int[][] authorsInRow = new int[k + 1][n];
+        int[][] authorsInCol = new int[k + 1][m];
+
+        int totalBooks = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                int author = bookshelf.get(i).get(j);
+                if (author > 0) {
+                    authorsInRow[author][i]++;
+                    authorsInCol[author][j]++;
+                    totalBooks++;
+                }
+            }
+        }
+
+        int operations = 0;
+        while (totalBooks > 0) {
+            operations++;
+            int maxRemoved = -1;
+            int bestI = -1;
+            int bestJ = -1;
+
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < m; j++) {
+                    int author = bookshelf.get(i).get(j);
+                    if (author > 0) {
+                        int removedCount = authorsInRow[author][i] + authorsInCol[author][j];
+                        if (removedCount > maxRemoved) {
+                            maxRemoved = removedCount;
+                            bestI = i;
+                            bestJ = j;
+                        }
+                    }
+                }
+            }
+
+            int authorToRemove = bookshelf.get(bestI).get(bestJ);
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < m; j++) {
+                    if (bookshelf.get(i).get(j) == authorToRemove && (i == bestI || j == bestJ)) {
+                        authorsInRow[authorToRemove][i]--;
+                        authorsInCol[authorToRemove][j]--;
+                        bookshelf.get(i).set(j, 0);
+                        totalBooks--;
+                    }
+                }
+            }
+        }
+        return operations;
+    }
+}
+
+
+class starvation {
+    public static List<Integer> findStarvation(List<Integer> priorities) {
+        int n = priorities.size();
+        List<Integer> starvation = new ArrayList<>(Collections.nCopies(n, 0));
+
+        // Coordinate Compression
+        List<Integer> sortedPriorities = new ArrayList<>(priorities);
+        Collections.sort(sortedPriorities);
+        HashMap<Integer, Integer> priorityMap = new HashMap<>();
+        int rank = 1;
+        for (int p : sortedPriorities) {
+            if (!priorityMap.containsKey(p)) {
+                priorityMap.put(p, rank++);
+            }
+        }
+
+        // Fenwick Tree (BIT) setup
+        int[] bit = new int[priorityMap.size() + 1];
+
+        // Process in reverse order
+        for (int i = n - 1; i >= 0; i--) {
+            int compressedPriority = priorityMap.get(priorities.get(i));
+
+            // Query Fenwick Tree for count of lower-priority items
+            int lowerPriorityCount = 0;
+            for (int idx = compressedPriority - 1; idx > 0; idx -= idx & -idx) {
+                lowerPriorityCount += bit[idx];
+            }
+            starvation.set(i, lowerPriorityCount);
+
+            // Update Fenwick Tree for the current priority
+            for (int idx = compressedPriority; idx < bit.length; idx += idx & -idx) {
+                bit[idx]++;
+            }
+        }
+        return starvation;
+    }
+}
+
+
+
