@@ -257,4 +257,45 @@ class starvation {
 }
 
 
+//This is the class I used for the first question;
+class Result {
+    public static List<Integer> findStarvation(List<Integer> priorities) {
+        int n = priorities.size();
+        List<Integer> starvation = new ArrayList<>(Collections.nCopies(n, 0));
+
+        // Step 1: Coordinate Compression
+        Set<Integer> uniquePriorities = new HashSet<>(priorities);
+        List<Integer> sortedUniquePriorities = new ArrayList<>(uniquePriorities);
+        Collections.sort(sortedUniquePriorities);
+
+        HashMap<Integer, Integer> priorityMap = new HashMap<>();
+        for (int i = 0; i < sortedUniquePriorities.size(); i++) {
+            priorityMap.put(sortedUniquePriorities.get(i), i + 1);
+        }
+
+        // Step 2: Fenwick Tree (BIT) setup
+        int[] bit = new int[sortedUniquePriorities.size() + 1];
+
+        // Step 3: Process in reverse order
+        for (int i = n - 1; i >= 0; i--) {
+            int currentPriority = priorities.get(i);
+            int compressedPriority = priorityMap.get(currentPriority);
+
+            // Query Fenwick Tree for count of lower-priority items
+            int lowerPriorityCount = 0;
+            for (int idx = compressedPriority - 1; idx > 0; idx -= idx & -idx) {
+                lowerPriorityCount += bit[idx];
+            }
+            starvation.set(i, lowerPriorityCount);
+
+            // Update Fenwick Tree for the current priority
+            for (int idx = compressedPriority; idx < bit.length; idx += idx & -idx) {
+                bit[idx]++;
+            }
+        }
+        return starvation;
+    }
+}
+
+
 
