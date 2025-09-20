@@ -299,3 +299,116 @@ class Result {
 
 
 
+class TableOfContentsGenerator {
+
+    /**
+     * Generates a table of contents from a list of strings,
+     * identifying chapters and sections based on markup.
+     *
+     * @param linesOfText An array of strings, where each string is a line of text.
+     * @return A list of strings representing the formatted table of contents.
+     */
+    public List<String> tableOfContents(String[] linesOfText) {
+        List<String> tableOfContentsList = new ArrayList<>();
+        int chapterNumber = 0;
+        int sectionNumber = 0;
+
+        for (String currentLine : linesOfText) {
+            if (currentLine.startsWith("# ")) {
+                // This line is a chapter title.
+                chapterNumber++;
+                sectionNumber = 0; // Reset section counter for the new chapter.
+
+                String chapterTitle = currentLine.substring(2);
+                tableOfContentsList.add(chapterNumber + ". " + chapterTitle);
+
+            } else if (currentLine.startsWith("## ")) {
+                // This line is a section title.
+                // It's only a valid section if a chapter has already been started.
+                if (chapterNumber > 0) {
+                    sectionNumber++;
+
+                    String sectionTitle = currentLine.substring(3);
+                    tableOfContentsList.add(chapterNumber + "." + sectionNumber + ". " + sectionTitle);
+                }
+            }
+            // Lines without a '#' or '##' prefix are simply ignored.
+        }
+        return tableOfContentsList;
+    }
+}
+
+
+class Resultt{
+
+    /*
+     * Complete the 'tableOfContents' function below.
+     *
+     * The function is expected to return a STRING_ARRAY.
+     * The function accepts STRING_ARRAY text as parameter.
+     */
+
+    public static List<String> tableOfContents(List<String> text) {
+        List<String> tableOfContentsList = new ArrayList<>();
+        int chapterNumber = 0;
+        int sectionNumber = 0;
+
+        for (String currentLine : text) {
+            if (currentLine.startsWith("# ")) {
+                // This line is a chapter title.
+                chapterNumber++;
+                sectionNumber = 0; // Reset section counter for the new chapter.
+
+                String chapterTitle = currentLine.substring(2);
+                tableOfContentsList.add(chapterNumber + ". " + chapterTitle);
+
+            } else if (currentLine.startsWith("## ")) {
+                // This line is a section title.
+                // It's only a valid section if a chapter has already been started.
+                if (chapterNumber > 0) {
+                    sectionNumber++;
+
+                    String sectionTitle = currentLine.substring(3);
+                    tableOfContentsList.add(chapterNumber + "." + sectionNumber + ". " + sectionTitle);
+                }
+            }
+            // Lines without a '#' or '##' prefix are simply ignored.
+        }
+        return tableOfContentsList;
+    }
+
+}
+
+//This is wrong
+class TableOfContents {
+
+    /**
+     * Completes the function tableOfContents in the editor with the following parameter:
+     * string text[]: the lines in the table of contents
+     *
+     * Returns:
+     * string[]: each string is a line in the table of contents
+     */
+    public String[] tableOfContents(String[] text) {
+        List<String> result = new ArrayList<>();
+        int chapterNumber = 0;
+        int sectionNumber = 0;
+
+        for (String line : text) {
+            if (line.startsWith("# ")) {
+                chapterNumber++;
+                sectionNumber = 0;
+                String title = line.substring(2);
+                result.add(chapterNumber + ". " + title);
+            } else if (line.startsWith("## ")) {
+                sectionNumber++;
+                String title = line.substring(3);
+                result.add(chapterNumber + "." + sectionNumber + ". " + title);
+            }
+        }
+
+        return result.toArray(new String[0]);
+    }
+}
+
+
