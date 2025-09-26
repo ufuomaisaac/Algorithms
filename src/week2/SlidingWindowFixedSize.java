@@ -150,7 +150,66 @@ public class SlidingWindowFixedSize {
             }
         }
         return maxSum;
+    }
 
+
+    // LeetCode 30
+    // Substring with Concatenation of All Words
+    public List<Integer> findSubstring(String s, String[] words) {
+        List<Integer> result = new ArrayList<>();
+
+        if (words.length == 0 || s.length() == 0) {
+            return result;
+        }
+
+        int wordLength = words[0].length();
+        int wordCount = words.length;
+        int stringLength = s.length();
+
+        // Step 1: Build the frequency map of words
+        Map<String, Integer> wordFrequency = new HashMap<>();
+        for (String word : words) {
+            wordFrequency.put(word, wordFrequency.getOrDefault(word, 0) + 1);
+        }
+
+        // Step 2: Try all possible starting offsets
+        for (int offset = 0; offset < wordLength; offset++) {
+            Map<String, Integer> windowFrequency = new HashMap<>();
+            int left = offset;
+            int matchedWords = 0;
+
+            // Step 3: Slide over the string in word-sized chunks
+            for (int right = offset; right + wordLength <= stringLength; right += wordLength) {
+                String currentWord = s.substring(right, right + wordLength);
+
+                // Case A: Current word is part of the target words
+                if (wordFrequency.containsKey(currentWord)) {
+                    windowFrequency.put(currentWord, windowFrequency.getOrDefault(currentWord, 0) + 1);
+                    matchedWords++;
+
+                    // Shrink window if we have more of 'currentWord' than allowed
+                    while (windowFrequency.get(currentWord) > wordFrequency.get(currentWord)) {
+                        String leftWord = s.substring(left, left + wordLength);
+                        windowFrequency.put(leftWord, windowFrequency.get(leftWord) - 1);
+                        left += wordLength;
+                        matchedWords--;
+                    }
+
+                    // If we matched all words, record starting index
+                    if (matchedWords == wordCount) {
+                        result.add(left);
+                    }
+
+                } else {
+                    // Case B: Current word not in words → reset window
+                    windowFrequency.clear();
+                    matchedWords = 0;
+                    left = right + wordLength;
+                }
+            }
+        }
+
+        return result;
     }
 }
 
