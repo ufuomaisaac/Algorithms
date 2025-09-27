@@ -209,7 +209,6 @@ public class SlidingWindowFixedSize {
                 }
             }
         }
-
         return result;
     }
 }
