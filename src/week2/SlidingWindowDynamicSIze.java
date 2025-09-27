@@ -27,6 +27,8 @@ public class SlidingWindowDynamicSIze {
         return maxLen;
     }
 
+    // Leetcode 424.
+    // Longest Repeating Character Replacement
     public int characterReplacement(String s, int k){
         int left = 0;
         int maxCount = 0;
