@@ -3,6 +3,47 @@ package week2;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
+The Sliding Window technique is used on arrays or strings to maintain a continuous sub-array or sub-string (the "window")
+whose size can either be fixed or dynamic,based on a specific condition.
+
+    1. Fixed-Size Sliding Window 📏
+    Used when the problem requires finding the maximum/minimum/average of all subarrays of a specific, constant length K.
+
+    Logic:
+    Initialize the window of size K. Calculate its initial result.
+    In a single loop, slide the window one element at a time.
+    In each step, add the new element entering the window.
+    Subtract the element leaving the window.
+    Update the result (max/min).
+
+    Time Complexity: O(N) (where N is the length of the array), as you only iterate through the array once.
+
+    Goldman Sachs Practice Problems:
+        #35 Sliding Window Maximum (Hard): While fixed size, this needs a Deque (Double-ended queue) to maintain the maximum in O(1) time, keeping the overall complexity at O(N).
+        Find the Maximum sum of a subarray of size K. (A generic template problem).
+
+
+    2. Dynamic-Size Sliding Window 📈
+    Used when the problem requires finding the longest or shortest subarray that satisfies a certain condition
+    (e.g., sum is ≥ target, or contains no more than K distinct characters).
+    The window expands on the right and contracts on the left only when the condition is violated.
+
+    Logic:
+    Initialize left = 0. Expand the window by incrementing right.
+    While the condition is met, update the result (usually storing the window length, right−left+1).
+    If the condition is violated, shrink the window by incrementing left until the condition is met again.
+
+    Time Complexity: O(N). Although there is a nested while loop, the left pointer never moves backward,
+    so each element is processed a maximum of twice (once by right, once by left).
+
+    Goldman Sachs Practice Problems:
+        #15 Longest Substring Without Repeating Characters (Medium).
+        #52 Minimum Size Subarray Sum (Medium).
+        #83 Longest Substring with At Most K Distinct Characters (Medium).
+        #84 Permutation in String (Medium): This uses a refined dynamic window where the window size is the length of the shorter string
+*/
+
 public class SlidingWindowDynamicSIze {
 
     // LeetCode 3
