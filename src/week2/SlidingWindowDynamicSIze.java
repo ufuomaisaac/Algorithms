@@ -149,6 +149,13 @@ public class SlidingWindowDynamicSIze {
         return result;
 
     }
+
+
+    //Assignement
+    // Do the Sliding window minimum
+    public  static int[] minSlidingWindow(int[] nums, int k) {
+        return new int[2];
+        }
 }
 
 
