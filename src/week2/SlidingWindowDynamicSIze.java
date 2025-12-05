@@ -48,6 +48,8 @@ whose size can either be fixed or dynamic,based on a specific condition.
 
 public class SlidingWindowDynamicSIze {
 
+
+
     // LeetCode 3
     // Longest Substring Without Repeating Characters
     public int lengthOfLongestSubstring(String s) {
@@ -69,6 +71,8 @@ public class SlidingWindowDynamicSIze {
 
         return maxLen;
     }
+
+
 
     // Leetcode 424.
     // Longest Repeating Character Replacement
@@ -96,6 +100,9 @@ public class SlidingWindowDynamicSIze {
     }
 
 
+
+    //Leetcode 239
+    //Sliding Window Maximum
     public  static int[] maxSlidingWindow(int[] nums, int k) {
         if (nums == null || k <= 0) {
             return new int[0];
@@ -104,7 +111,6 @@ public class SlidingWindowDynamicSIze {
         int n = nums.length;
         int[] result = new int[n - k + 1];
         int resultIndex = 0;
-
         Deque<Integer> deque = new ArrayDeque<>();
 
         /**
@@ -112,7 +118,6 @@ public class SlidingWindowDynamicSIze {
          the starting index of the current window (i - k + 1) then the maximum at this instance is stale because
          sliding window length is lesser than the expected value k.
          */
-
         for (int i = 0; i < n; i++) {
 
             // Step 1: Remove indices from the front that are outside the current window (i - k)
@@ -125,7 +130,6 @@ public class SlidingWindowDynamicSIze {
             // Step 2: Maintain the monotonically Decreasing property
             // Remove indices from the back whose corresponding values are less than the current element
             // ...(nums[i]).
-
             // These elements are no longer relevant because the current element is larger
             // and is also closer to the right end of the window.
             while (!deque.isEmpty() && nums[deque.peekLast()] <= nums[i]) {
@@ -142,7 +146,6 @@ public class SlidingWindowDynamicSIze {
                 result[resultIndex++] = nums[deque.peekFirst()];
             }
         }
-
         return result;
 
     }
