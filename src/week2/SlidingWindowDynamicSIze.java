@@ -1,5 +1,7 @@
 package week2;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -91,6 +93,58 @@ public class SlidingWindowDynamicSIze {
             result = Math.max(result, right - left + 1);
         }
         return result;
+    }
+
+
+    public  static int[] maxSlidingWindow(int[] nums, int k) {
+        if (nums == null || k <= 0) {
+            return new int[0];
+        }
+
+        int n = nums.length;
+        int[] result = new int[n - k + 1];
+        int resultIndex = 0;
+
+        Deque<Integer> deque = new ArrayDeque<>();
+
+        /**
+         The condition means: if the index of the current maximum element (deque.peekFirst()) is less than
+         the starting index of the current window (i - k + 1) then the maximum at this instance is stale because
+         sliding window length is lesser than the expected value k.
+         */
+
+        for (int i = 0; i < n; i++) {
+
+            // Step 1: Remove indices from the front that are outside the current window (i - k)
+            // The window starts at index (i - k + 1). Anything before that is stale.
+            if(!deque.isEmpty() && deque.peekFirst() < i - k + 1) {
+                deque.removeFirst();
+
+            }
+
+            // Step 2: Maintain the monotonically Decreasing property
+            // Remove indices from the back whose corresponding values are less than the current element
+            // ...(nums[i]).
+
+            // These elements are no longer relevant because the current element is larger
+            // and is also closer to the right end of the window.
+            while (!deque.isEmpty() && nums[deque.peekLast()] <= nums[i]) {
+                deque.removeLast();
+            }
+
+            // Step 3: Add the current index to the back of the deque
+            deque.addLast(i);
+
+            // Step 4: Record the result once the first window is formed
+            // The first window is complete when i >= k - 1
+            if (i >= k - 1) {
+                // The element at the front of the deque is the index of the maximum element
+                result[resultIndex++] = nums[deque.peekFirst()];
+            }
+        }
+
+        return result;
+
     }
 }
 
