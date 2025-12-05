@@ -156,6 +156,9 @@ public class SlidingWindowDynamicSIze {
     public  static int[] minSlidingWindow(int[] nums, int k) {
 
 
+        //Guard Clause
+
+
 
 
         //Initialize parameter
