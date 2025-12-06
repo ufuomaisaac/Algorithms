@@ -157,9 +157,9 @@ public class SlidingWindowDynamicSIze {
 
 
         //Guard Clause
-
-
-
+        if(nums == null || k <= 0){
+            return new int[0];
+        }
 
         //Initialize parameter
         int n = nums.length;
