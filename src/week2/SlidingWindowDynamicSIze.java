@@ -189,12 +189,13 @@ public class SlidingWindowDynamicSIze {
     }
 
 
+    // LeetCode 1004.
+    // Max Consecutive Ones III
     public int longestOnes(int[] nums, int k) {
 
         int maxCount = 0;
         int zeroCount = 0;
         int left = 0;
-
 
         for(int right = 0; right < nums.length; right++) {
             if(nums[right] == 0) {
@@ -206,7 +207,6 @@ public class SlidingWindowDynamicSIze {
                     zeroCount--;
                 }
                 left++;
-
             }
             maxCount = Math.max(maxCount, right - left + 1);
         }
