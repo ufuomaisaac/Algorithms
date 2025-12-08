@@ -100,7 +100,17 @@ public class SlidingWindowDynamicSIze {
     }
 
 
-
+    /**
+     * O(N) Monotonic Deque Solution: Sliding Window Maximum (LeetCode 239)
+     * * Strategy: Use a Deque to store indices, maintaining a monotonically DECREASING order of values.
+     * * This ensures the maximum element's index is always at the front (O(1) lookup).
+     * * Time Complexity: O(N) - Each index is added and removed at most once.
+     * * LOGIC STEPS (Inside the loop, for index 'i'):
+     * 1. Cleanup Stale Index (Front): Remove index 'i_stale' from the front if it's outside the window (i_stale < i - k + 1).
+     * 2. Maintain Monotonicity (Back): While nums[i] is >= the value at the back of the Deque, remove the back index. (The smaller, older index is now irrelevant).
+     * 3. Add New Index: Add the current index 'i' to the back of the Deque.
+     * 4. Record Result: If the window is fully formed (i >= k - 1), record nums[deque.peekFirst()] as the maximum for this window.
+     */
     //Leetcode 239
     //Sliding Window Maximum
     public  static int[] maxSlidingWindow(int[] nums, int k) {
@@ -189,6 +199,9 @@ public class SlidingWindowDynamicSIze {
     }
 
 
+
+
+
     /**
      * O(N) Sliding Window: Max Consecutive Ones III.
      * * 1. Initialize: left=0, zeroCount=0.
@@ -197,7 +210,6 @@ public class SlidingWindowDynamicSIze {
      * - Before moving 'left', decrement zeroCount if nums[left] was a 0.
      * 4. Update Max: Calculate and record maxLength = max(maxLength, right - left + 1).
      */
-
     // LeetCode 1004.
     // Max Consecutive Ones III
     public int longestOnes(int[] nums, int k) {
