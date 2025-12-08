@@ -189,6 +189,15 @@ public class SlidingWindowDynamicSIze {
     }
 
 
+    /**
+     * O(N) Sliding Window: Max Consecutive Ones III.
+     * * 1. Initialize: left=0, zeroCount=0.
+     * 2. Expand (Right): Loop, incrementing zeroCount if nums[right] == 0.
+     * 3. Shrink (Left): If zeroCount > k, shrink the window by moving 'left'.
+     * - Before moving 'left', decrement zeroCount if nums[left] was a 0.
+     * 4. Update Max: Calculate and record maxLength = max(maxLength, right - left + 1).
+     */
+
     // LeetCode 1004.
     // Max Consecutive Ones III
     public int longestOnes(int[] nums, int k) {
