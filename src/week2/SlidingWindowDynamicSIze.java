@@ -150,11 +150,13 @@ public class SlidingWindowDynamicSIze {
 
     }
 
+
+
+    // In review
     // Not done
     // Assignement
     // Do the Sliding window minimum
     public  static int[] minSlidingWindow(int[] nums, int k) {
-
 
         //Guard Clause
         if(nums == null || k <= 0){
@@ -165,8 +167,6 @@ public class SlidingWindowDynamicSIze {
         int n = nums.length;
         int[] result = new int[n - k + 1];
         int resultIndex = 0;
-
-
         Deque<Integer> deque = new ArrayDeque<>();
 
         for(int i = 0; i < n ; i++) {
@@ -178,19 +178,15 @@ public class SlidingWindowDynamicSIze {
             while(!deque.isEmpty() && deque.peekLast() <= nums[i]) {
                 deque.removeLast();
             }
-
             deque.addLast(i);
 
             if(i >= k - 1){
                 result[resultIndex++] = nums[deque.peekFirst()];
             }
-
         }
-
         return result;
 
-
-        }
+    }
 
 }
 
