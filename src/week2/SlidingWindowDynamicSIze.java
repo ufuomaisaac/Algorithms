@@ -50,6 +50,7 @@ public class SlidingWindowDynamicSIze {
 
 
 
+
     // LeetCode 3
     // Longest Substring Without Repeating Characters
     public int lengthOfLongestSubstring(String s) {
@@ -71,6 +72,7 @@ public class SlidingWindowDynamicSIze {
 
         return maxLen;
     }
+
 
 
 
@@ -98,6 +100,8 @@ public class SlidingWindowDynamicSIze {
         }
         return result;
     }
+
+
 
 
     /**
@@ -162,12 +166,12 @@ public class SlidingWindowDynamicSIze {
 
 
 
+
     // In review
     // Not done
     // Assignement
     // Do the Sliding window minimum
     public  static int[] minSlidingWindow(int[] nums, int k) {
-
         //Guard Clause
         if(nums == null || k <= 0){
             return new int[0];
@@ -201,7 +205,6 @@ public class SlidingWindowDynamicSIze {
 
 
 
-
     /**
      * O(N) Sliding Window: Max Consecutive Ones III.
      * * 1. Initialize: left=0, zeroCount=0.
@@ -213,7 +216,6 @@ public class SlidingWindowDynamicSIze {
     // LeetCode 1004.
     // Max Consecutive Ones III
     public int longestOnes(int[] nums, int k) {
-
         int maxCount = 0;
         int zeroCount = 0;
         int left = 0;
@@ -235,6 +237,8 @@ public class SlidingWindowDynamicSIze {
     }
 
 
+
+
     /**
      * O(N) Sliding Window: Longest Repeating Character Replacement (LC 424).
      * * 1. Initialize: left=0, maxCount=0, result = 0.(Note: Use maxCount for this problem).
@@ -247,7 +251,6 @@ public class SlidingWindowDynamicSIze {
     // Leetcode 424.
     // Longest Repeating Character Replacement
     public static int characterReplacementt(String s,int k) {
-
         int left = 0, maxCount = 0, result = 0;
         int[] freq = new int[26];
 
