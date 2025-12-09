@@ -234,6 +234,29 @@ public class SlidingWindowDynamicSIze {
         return maxCount;
     }
 
+
+    public static int characterReplacementt(String s,int k) {
+        int left = 0, maxCount = 0, result = 0;
+
+        int[] freq = new int[26];
+
+        for(int right = 0; right < s.length(); right++) {
+            char c = s.charAt(right);
+            freq[c - 'A']++;
+            maxCount = Math.max(freq[c - 'A']++, maxCount);
+
+            while((right - left + 1) - maxCount > k){
+                char a = s.charAt(left);
+                freq[a - 'A']--;
+                left++;
+            }
+
+            result = right - left + 1;
+
+        }
+        return result;
+    }
+
 }
 
 
