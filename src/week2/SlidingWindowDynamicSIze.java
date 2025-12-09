@@ -235,23 +235,33 @@ public class SlidingWindowDynamicSIze {
     }
 
 
+    /**
+     * O(N) Sliding Window: Longest Repeating Character Replacement (LC 424).
+     * * 1. Initialize: left=0, maxCount=0, result = 0.(Note: Use maxCount for this problem).
+     * 2. Expansion (Right): Loop, incrementing frequency and updating maxCount (the highest frequency of any char in the window).
+     * 3. Shrink (Left): If (Window Size - maxCount) > k, shrink the window by moving 'left'.
+     * - Decrement the frequency of the character leaving the window (s.charAt(left)).
+     * 4. Update Max: Record maxLength = max(maxLength, right - left + 1).
+     * 5. update Result: Record result = max(result, right - left + 1).
+     */
+    // Leetcode 424.
+    // Longest Repeating Character Replacement
     public static int characterReplacementt(String s,int k) {
-        int left = 0, maxCount = 0, result = 0;
 
+        int left = 0, maxCount = 0, result = 0;
         int[] freq = new int[26];
 
         for(int right = 0; right < s.length(); right++) {
             char c = s.charAt(right);
             freq[c - 'A']++;
-            maxCount = Math.max(freq[c - 'A']++, maxCount);
+            maxCount = Math.max(freq[c - 'A'], maxCount);
 
             while((right - left + 1) - maxCount > k){
                 char a = s.charAt(left);
                 freq[a - 'A']--;
                 left++;
             }
-
-            result = right - left + 1;
+            result = Math.max(result, (right - left + 1));
 
         }
         return result;
