@@ -272,9 +272,20 @@ public class SlidingWindowDynamicSIze {
 
 
 
-
+    /**
+     * O(N) Sliding Window: Minimum Size Subarray Sum (LC 209).
+     * * Strategy: Expand the window until sum >= target. Contract it to find the minimum valid length.
+     * * 1. Initialize: left=0, sum=0, minLength=Integer.MAX_VALUE.
+     * 2. Expand (Right): Loop, adding nums[right] to sum.
+     * 3. Contract (Inner While): While sum >= target:
+     * a. Update minLength with (right - left + 1).
+     * b. Subtract nums[left] from sum.
+     * c. Move left++.
+     * 4. Return: minLength or 0 if no solution found.
+     */
+    // Leetcode 209
+    // Minimum Size Subarray Sum
     public int minSubArrayLen(int target, int[] nums) {
-
         int left = 0, result = Integer.MAX_VALUE, currentSum = 0;
 
         for(int right = 0; right <nums.length; right++) {
@@ -287,7 +298,6 @@ public class SlidingWindowDynamicSIze {
             }
         }
         return result == Integer.MAX_VALUE ? 0 : result;
-        //return result;
 
     }
 
