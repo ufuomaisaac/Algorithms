@@ -270,6 +270,30 @@ public class SlidingWindowDynamicSIze {
         return result;
     }
 
+
+
+
+    public int minSubArrayLen(int target, int[] nums) {
+
+        int left = 0, result = Integer.MAX_VALUE, currentSum = 0;
+
+        for(int right = 0; right <nums.length; right++) {
+            currentSum += nums[right];
+
+            while(currentSum >= target) {
+                result =Math.min(result, right - left + 1) ;
+                currentSum -= nums[left];
+                left++;
+            }
+        }
+        return result == Integer.MAX_VALUE ? 0 : result;
+        //return result;
+
+    }
+
+
+
+
 }
 
 
