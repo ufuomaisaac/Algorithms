@@ -298,11 +298,7 @@ public class SlidingWindowDynamicSIze {
             }
         }
         return result == Integer.MAX_VALUE ? 0 : result;
-
     }
-
-
-
 
 }
 
