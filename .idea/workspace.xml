@@ -7,7 +7,6 @@
     <list default="true" id="fb96560a-f85b-47b7-a62f-cc2e196dee7c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/week2/KadanesAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/week2/KadanesAlgorithm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/week2/SlidingWindowDynamicSIze.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/week2/SlidingWindowDynamicSIze.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +86,8 @@
       <updated>1725820172693</updated>
       <workItem from="1765299600502" duration="7068000" />
       <workItem from="1765356306754" duration="4318000" />
-      <workItem from="1765434951961" duration="7195000" />
+      <workItem from="1765434951961" duration="7907000" />
+      <workItem from="1765884763335" duration="1989000" />
     </task>
     <servers />
   </component>
