@@ -27,7 +27,7 @@ public class KadanesAlgorithm {
      * so it's always better to reset and start a new subarray from the next element.
      */
 
-    // LeetCode  53
+    // LeetCode 53
     // Maximum Subarray Sum problem
     public int maxSubArray(int[] nums) {
         int maxSum = Integer.MIN_VALUE;
@@ -45,6 +45,13 @@ public class KadanesAlgorithm {
             }
         }
         return maxSum;
+
+    }
+
+
+
+    public int maxSubarraySumCircular(int[] nums) {
+        return 0;
 
     }
 
