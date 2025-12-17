@@ -85,19 +85,21 @@ public class KadanesAlgorithm {
 
 
     public int maxProduct(int[] nums) {
-        int maxProduct = 1;
-        int currentProduct = 1;
-        boolean oneIsValid = false;
+        int n = nums.length;
+        int maxProduct = Integer.MIN_VALUE;
+        int prefixSum = 1, suffixSum = 1;
 
         for(int i = 0; i < nums.length; i++) {
-            currentProduct *= nums[i];
+            prefixSum *= nums[i];
+            suffixSum  *= nums[n - i - 1];
 
-            currentProduct = Math.max(currentProduct, nums[i]);
-            maxProduct = Math.max(currentProduct, nums[i]);
-            if(nums[i] == 1){
-                oneIsValid = true;
-            }
+            maxProduct = Math.max(maxProduct, Math.max(prefixSum, suffixSum));
+
+            if(nums[i] == 0) prefixSum = 1;
+            if(nums[n - i - 1] == 0) suffixSum = 1;
+
         }
+        return maxProduct;
     }
 
 }
