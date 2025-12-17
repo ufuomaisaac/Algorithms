@@ -84,6 +84,19 @@ public class KadanesAlgorithm {
     }
 
 
+    /**
+     * O(N) Prefix & Suffix Sweep: Maximum Product Subarray (LC 152).
+     * * Strategy: The max product must be a prefix or a suffix (due to odd/even negatives).
+     * * 1. Initialize: maxProd=Integer.MIN_VALUE, pref=1, suff=1.
+     * 2. Loop (i=0 to N):
+     * - Calculate pref: Cumulative product from index 0.
+     * - Calculate suff: Cumulative product from index n-1-i.
+     * - Update maxProd: max(maxProd, pref, suff).
+     * - Reset: If pref or suff becomes 0, reset to 1 (treats 0 as a subarray boundary).
+     * 3. Return: maxProd.
+     */
+    // Leetcode 152
+    // Maximum Product Subarray
     public int maxProduct(int[] nums) {
         int n = nums.length;
         int maxProduct = Integer.MIN_VALUE;
