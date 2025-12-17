@@ -2,16 +2,12 @@ package week2;
 
 public class KadanesAlgorithm {
 
-
     // Leetcode 1014
     // Best Sightseeing Pair
     public int maxScoreSlighseeingPair(int []values){
         int result = Integer.MIN_VALUE;
 
     }
-
-
-
 
 
     /**
@@ -45,14 +41,34 @@ public class KadanesAlgorithm {
             }
         }
         return maxSum;
-
     }
 
 
 
     public int maxSubarraySumCircular(int[] nums) {
-        return 0;
+        int currentMax = 0, maxSubarray = 0;
+        int currentMin = 0, minSubarray = 0;
+        int totalSum = 0;
 
+        for(int i = 0; i < nums.length; i++){
+            totalSum += nums[i];
+
+            // 1. Standard Kadane's for Maximum Subarray
+            currentMax = Math.max(nums[i], currentMax + nums[i]);
+            maxSubarray = Math.max(maxSubarray, currentMax);
+
+            // 2. Standard Kadane's for Minimum Subarray
+            currentMin = Math.min(nums[i], currentMin + nums[i]);
+            minSubarray = Math.min(minSubarray, currentMin);
+        }
+
+        // 3. Special Case: If all numbers are negative
+        // totalSum == minSubarray, so totalSum - minSubarray = 0.
+        // We must return the maxSubarray (the largest single negative number).
+        if(maxSubarray < 0) return maxSubarray;
+
+        // 4. Return the better of the two: Linear Max vs Circular Max
+        return Math.max(maxSubarray, totalSum - minSubarray);
     }
 
 }
