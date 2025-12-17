@@ -83,4 +83,21 @@ public class KadanesAlgorithm {
         return Math.max(maxSubarray, totalSum - minSubarray);
     }
 
+
+    public int maxProduct(int[] nums) {
+        int maxProduct = 1;
+        int currentProduct = 1;
+        boolean oneIsValid = false;
+
+        for(int i = 0; i < nums.length; i++) {
+            currentProduct *= nums[i];
+
+            currentProduct = Math.max(currentProduct, nums[i]);
+            maxProduct = Math.max(currentProduct, nums[i]);
+            if(nums[i] == 1){
+                oneIsValid = true;
+            }
+        }
+    }
+
 }
