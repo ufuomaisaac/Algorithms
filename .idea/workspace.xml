@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb96560a-f85b-47b7-a62f-cc2e196dee7c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/week2/KadanesAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/week2/KadanesAlgorithm.java" afterDir="false" />
-    </list>
+    <list default="true" id="fb96560a-f85b-47b7-a62f-cc2e196dee7c" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -89,7 +86,7 @@
       <workItem from="1765434951961" duration="7907000" />
       <workItem from="1765884763335" duration="4003000" />
       <workItem from="1765924233222" duration="1041000" />
-      <workItem from="1765966510945" duration="9384000" />
+      <workItem from="1765966510945" duration="10080000" />
     </task>
     <servers />
   </component>

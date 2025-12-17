@@ -7,6 +7,7 @@ public class KadanesAlgorithm {
     public int maxScoreSlighseeingPair(int []values){
         int result = Integer.MIN_VALUE;
 
+
     }
 
 
