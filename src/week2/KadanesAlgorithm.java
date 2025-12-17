@@ -44,7 +44,19 @@ public class KadanesAlgorithm {
     }
 
 
-
+    /**
+     * O(N) Kadane's Variation: Maximum Sum Circular Subarray (LC 918).
+     * * Strategy: The max sum is either the standard max subarray OR (Total Sum - min subarray).
+     * * 1. Initialize: total=0, currmax=0, currmin=0, max=nums[0], min=nums[0].
+     * 2. Loop (num):
+     * - Update total: total += num.
+     * - Standard Kadane: currmax = max(num, currmax + num), update global max.
+     * - Inverse Kadane: currmin = min(num, currmin + num), update global min.
+     * 3. Edge Case: If all numbers are negative (max < 0), return max.
+     * 4. Return: max(max, total - min).
+     */
+    // Leetcode 918
+    // Maximum Sum Circular Subarray
     public int maxSubarraySumCircular(int[] nums) {
         int currentMax = 0, maxSubarray = 0;
         int currentMin = 0, minSubarray = 0;
