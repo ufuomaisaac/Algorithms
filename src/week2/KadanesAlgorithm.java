@@ -5,8 +5,18 @@ public class KadanesAlgorithm {
     // Leetcode 1014
     // Best Sightseeing Pair
     public int maxScoreSlighseeingPair(int []values){
-        int result = Integer.MIN_VALUE;
 
+        int first = values[0];
+        int second;
+        int maxPairSum = Integer.MIN_VALUE;
+
+        for(int i = 1; i < values.length; i++){
+            second = values[i] - 1;
+            maxPairSum = Math.max(maxPairSum, first + second);
+            first = Math.max(first, second);
+
+        }
+        return maxPairSum;
 
     }
 
