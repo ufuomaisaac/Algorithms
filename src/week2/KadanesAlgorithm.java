@@ -20,6 +20,25 @@ public class KadanesAlgorithm {
 
     }
 
+    public int maxScoreSightseeingPair(int[] values) {
+        int maxTotalScore = 0;
+
+        // maxLeftScore represents the maximum value of (values[i] + i) found so far.
+        // We initialize it with the first element (index 0).
+        int maxLeftScore = values[0];
+
+        for (int j = 1; j < values.length; j++) {
+            // 1. Calculate the potential score using the current index as 'j'
+            // Current Score = (values[j] - j) + maxLeftScore
+            maxTotalScore = Math.max(maxTotalScore, values[j] - j + maxLeftScore);
+
+            // 2. Update maxLeftScore for the next iteration.
+            // We check if the current index 'j' would be a better 'i' for future pairs.
+            maxLeftScore = Math.max(maxLeftScore, values[j] + j);
+        }
+
+        return maxTotalScore;
+    }
 
     /**
      * O(N) Kadane's Algorithm: Maximum Subarray Sum (LC 53).
