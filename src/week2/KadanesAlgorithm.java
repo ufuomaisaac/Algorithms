@@ -2,24 +2,6 @@ package week2;
 
 public class KadanesAlgorithm {
 
-    // Leetcode 1014
-    // Best Sightseeing Pair
-    public int maxScoreSlightseeingPair(int []values){
-
-        int first = values[0];
-        int second;
-        int maxPairSum = 0;
-
-        for(int i = 1; i < values.length; i++){
-            second = values[i] - 1;
-            maxPairSum = Math.max(maxPairSum, first + second);
-            first = Math.max(first, second);
-
-        }
-        return maxPairSum;
-
-    }
-
     /**
      * O(N) Greedy: Best Sightseeing Pair (LC 1014).
      * * Strategy: Maximize Part1 (val[i]+i) and Part2 (val[j]-j) separately.
