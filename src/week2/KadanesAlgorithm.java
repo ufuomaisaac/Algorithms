@@ -1,6 +1,30 @@
 package week2;
 
+
+/**
+ * THE KADANE & SINGLE-PASS PATTERN: CORE COMMONALITIES
+ * * 1. FORMULA REARRANGEMENT (The $O(N^2) \rightarrow O(N)$ Trick)
+ * - Brute force checks all pairs (i, j), which is $O(N^2)$.
+ * - These problems allow us to split the formula into independent parts:
+ * - Max Subarray: Sum(i...j) = PrefixSum[j] - PrefixSum[i-1]
+ * - Sightseeing: (val[i] + i) + (val[j] - j)
+ * - By splitting, we only need to track the "Best Part 1" from the past.
+ * * 2. THE "EXTEND VS. RESTART" DECISION (Greedy Choice)
+ * - At each element, we make a local optimal choice:
+ * - Max Subarray: "Do I add this number to the current sum, or start fresh?"
+ * - Max Product: "Do I multiply by the current max/min, or start fresh?"
+ * - Sightseeing: "Is this spot a better 'start' for future pairs than the best one found so far?"
+ * * 3. STATE TRACKING ($O(1)$ Space)
+ * - We use variables to store the "Best So Far" (Global) and "Best Ending Here" (Local).
+ * - This eliminates the need for an array or a DP table, keeping space constant.
+ * * 4. PROBLEM-SPECIFIC TWISTS:
+ * - MAX SUBARRAY: Reset current sum to 0 if it becomes negative.
+ * - MAX PRODUCT: Track both Max and Min because a negative * negative = positive.
+ * - CIRCULAR SUBARRAY: Max is either (Standard Kadane) or (Total Sum - Min Subarray).
+ * - SIGHTSEEING PAIR: Distance penalty is handled by storing index in the state (val[i] + i).
+ */
 public class KadanesAlgorithm {
+
 
     /**
      * O(N) Greedy: Best Sightseeing Pair (LC 1014).
@@ -137,5 +161,4 @@ public class KadanesAlgorithm {
         }
         return maxProduct;
     }
-
 }
