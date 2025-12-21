@@ -53,9 +53,73 @@ public class MatrixIID {
     }
 
     public void rotate(int[][] matrix) {
+        int n = matrix.length;
+
+
+        // Step 1: Transpose (Swap matrix[i][j] with matrix[j][i])
+        // We only iterate over the upper triangle (j = i + 1) to avoid double-swapping.
+        for(int i = 0; i < n; i++) {
+            for(int j = i + 1; j < n; j++) {
+                int temp = matrix[i][j];
+                matrix[i][j] = matrix[j][i];
+                matrix[j][i] = temp;
+            }
+            // Step 2: Reverse each row
+            // Using a simple two-pointer approach for each row.
+
+        }
+        for (int i = 0; i < n; i++) {
+            reverseRow(matrix[i]);
+        }
+
 
     }
 
+    public void reverseRow(int[] row) {
+        int left = 0;
+        int right = row.length - 1;
+
+        while(left < right){
+            int temp = row[left];
+            row[left] = row[right];
+            row[right] = temp;
+            left++;
+            right--;
+        }
+    }
+
+    public void rotatee(int[][] matrix) {
+        if (matrix == null || matrix.length <= 1) return;
+
+        transpose(matrix);
+        reverseRows(matrix);
+    }
+
+    private void transpose(int[][] matrix) {
+        int n = matrix.length;
+        for (int i = 0; i < n; i++) {
+            // j starts at i + 1 to only swap the upper triangle with the lower triangle
+            for (int j = i + 1; j < n; j++) {
+                int temp = matrix[i][j];
+                matrix[i][j] = matrix[j][i];
+                matrix[j][i] = temp;
+            }
+        }
+    }
+
+    private void reverseRows(int[][] matrix) {
+        for (int[] row : matrix) {
+            int left = 0;
+            int right = row.length - 1;
+            while (left < right) {
+                int temp = row[left];
+                row[left] = row[right];
+                row[right] = temp;
+                left++;
+                right--;
+            }
+        }
+    }
 
 
 }
