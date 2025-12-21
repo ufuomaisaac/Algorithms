@@ -52,6 +52,19 @@ public class MatrixIID {
         return result;
     }
 
+
+
+    /**
+     * O(N^2) Two-Step Rotation: Rotate Image (LC 48).
+     * * Strategy: Clockwise 90 deg = Transpose + Horizontal Reverse.
+     * * 1. Transpose: Swap elements across the main diagonal (row i, col j <-> row j, col i).
+     * - Important: Inner loop starts at j = i + 1 to avoid swapping back.
+     * 2. Reverse: For each row, swap elements from ends to middle using two pointers.
+     * 3. Space Complexity: O(1) because all swaps are done in-place.
+     */
+    // Leetcode  48
+    // Rotate Image
+    // preferred solution
     public void rotate(int[][] matrix) {
         int n = matrix.length;
 
@@ -88,6 +101,8 @@ public class MatrixIID {
         }
     }
 
+
+    // Another solution
     public void rotatee(int[][] matrix) {
         if (matrix == null || matrix.length <= 1) return;
 
