@@ -216,6 +216,17 @@ public class MatrixIID {
     }
 
 
+    /**
+     * O(1) Single-Pass: Valid Sudoku (LC 36).
+     * * Strategy: Use three boolean arrays to track digits 1-9 in Rows, Cols, and 3x3 Boxes.
+     * * 1. numIndex = board[r][c] - '1' (Maps 1-9 to 0-8).
+     * 2. boxIndex = (r/3)*3 + (c/3) (Maps grid position to sub-box 0-8).
+     * 3. Check if 'numIndex' exists in rowSeen[r], colSeen[c], or boxSeen[boxIndex].
+     * 4. If exists, return false. Else, mark as true and continue.
+     * 5. Space/Time: O(1) because board size is fixed at 81 cells.
+     */
+    // Leetcode 36
+    // Valid Sudoko
     public boolean isValidSudoku(char[][] board) {
         /**
          * O(1) Time, O(1) Space - Valid Sudoku
@@ -231,7 +242,7 @@ public class MatrixIID {
 
                 char currentVal = board[r][c];
 
-                if(currentVal == '.') {
+                if (currentVal == '.') {
                     continue;
                 }
 
@@ -239,10 +250,18 @@ public class MatrixIID {
                 int numIndex = currentVal - '1';
                 int boxIndex = (r / 3) * 3 + (c / 3);
 
+                // If number was already seen in row, column, or sub-box, it's invalid
+                if (rowSeen[r][numIndex] || columnSeen[c][numIndex] || boxSeen[boxIndex][numIndex]) {
+                    return false;
+                }
 
-
+                // Mark the number as seen in all three tracking matrices
+                rowSeen[r][numIndex] = true;
+                columnSeen[c][numIndex] = true;
+                boxSeen[boxIndex][numIndex] = true;
             }
         }
+        return true;
 
     }
 
