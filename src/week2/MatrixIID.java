@@ -139,8 +139,69 @@ public class MatrixIID {
 
 
     public void setZeroes(int[][] matrix) {
+        /**
+         * O(M*N) Time, O(1) Space - Set Matrix Zeroes
+         */
 
+        //Guide clause
+        if(matrix == null || matrix.length == 0) return;
+
+        int rows  = matrix.length;
+        int columns = matrix[0].length;
+
+        boolean firstRowHasZero = false;
+        boolean firstColumnHasZero = false;
+
+
+        // PHASE 1: Record original state of the first row and column
+        // We do this because we will soon use them as storage makers
+        for(int i = 0; i < rows; i++){
+            if(matrix[i][0] == 0) {
+                firstRowHasZero  = true;
+                break;
+            }
+        }
+
+        for(int j = 0; j < columns; j++) {
+            if(matrix[0][j] == 0) {
+                firstColumnHasZero = true;
+                break;
+            }
+        }
+
+        //Phase 2: Mark the makers
+        //Scan internal matrix; if matrix [i][j] is 0, mark the "head" of that row and column;
+        for(int i = 0; i < rows; i++){
+            for(int j = 0; j < columns; j++) {
+                if(matrix[i][j] == 0) {
+                    matrix[i][0] = 0;
+                    matrix[0][j] = 0;
+                }
+            }
+        }
+
+        // Phase 3: Use Markers to fill the inner matrix with zeros
+        for(int i = 0; i < rows; i++){
+            for(int j = 0; j < columns; j++){
+                if(matrix[i][0] == 0 || matrix[0][j] == 0) {
+                    matrix[i][j] = 0;
+                }
+            }
+        }
+
+        //PHASE 4: finalize the first row and column
+        //we do this last so we dont interfere with the internal marking process
+        if(firstRowHasZero) {
+            for(int i = 0; i < rows; i++){
+                matrix[i][0] = 0;
+            }
+        }
+
+        if(firstColumnHasZero) {
+            for(int j = 0; j < columns; j++) {
+                matrix[0][j] = 0;
+            }
+        }
     }
-
 
 }
