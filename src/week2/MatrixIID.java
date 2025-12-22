@@ -241,7 +241,6 @@ public class MatrixIID {
             for(int c = 0; c < 9; c++) {
 
                 char currentVal = board[r][c];
-
                 if (currentVal == '.') {
                     continue;
                 }
@@ -262,7 +261,6 @@ public class MatrixIID {
             }
         }
         return true;
-
     }
 
 }
