@@ -138,6 +138,17 @@ public class MatrixIID {
 
 
 
+    /**
+     * O(M*N) Time, O(1) Space: Set Matrix Zeroes (LC 73).
+     * * Strategy: Use the first row and column as "markers" to avoid O(M+N) extra space.
+     * * 1. Store original zero-state of Row 0 and Col 0 in 2 boolean flags.
+     * 2. Scan internal matrix (1,1 to M,N); if element is 0, set its Row-start and Col-start to 0.
+     * 3. Re-scan internal matrix; if its Row-start or Col-start is 0, set element to 0.
+     * 4. Finally, use the 2 boolean flags to zero out Row 0 and Col 0 if they originally had zeros.
+     */
+
+    // Leetcode 73
+    // Set Matrix Zeroes
     public void setZeroes(int[][] matrix) {
         /**
          * O(M*N) Time, O(1) Space - Set Matrix Zeroes
