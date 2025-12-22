@@ -171,8 +171,8 @@ public class MatrixIID {
 
         //Phase 2: Mark the makers
         //Scan internal matrix; if matrix [i][j] is 0, mark the "head" of that row and column;
-        for(int i = 0; i < rows; i++){
-            for(int j = 0; j < columns; j++) {
+        for(int i = 1; i < rows; i++){
+            for(int j = 1; j < columns; j++) {
                 if(matrix[i][j] == 0) {
                     matrix[i][0] = 0;
                     matrix[0][j] = 0;
@@ -181,8 +181,8 @@ public class MatrixIID {
         }
 
         // Phase 3: Use Markers to fill the inner matrix with zeros
-        for(int i = 0; i < rows; i++){
-            for(int j = 0; j < columns; j++){
+        for(int i = 1; i < rows; i++){
+            for(int j = 1; j < columns; j++){
                 if(matrix[i][0] == 0 || matrix[0][j] == 0) {
                     matrix[i][j] = 0;
                 }
