@@ -215,4 +215,35 @@ public class MatrixIID {
         }
     }
 
+
+    public boolean isValidSudoku(char[][] board) {
+        /**
+         * O(1) Time, O(1) Space - Valid Sudoku
+         * Note: Time is constant because the board is always 9x9.
+         */
+
+        boolean[][] rowSeen= new boolean[9][9];
+        boolean[][] columnSeen = new boolean[9][9];
+        boolean[][] boxSeen = new boolean[9][9];
+
+        for(int r = 0; r < 9; r++){
+            for(int c = 0; c < 9; c++) {
+
+                char currentVal = board[r][c];
+
+                if(currentVal == '.') {
+                    continue;
+                }
+
+                //Convert char '1'-'9' to index 0-8
+                int numIndex = currentVal - '1';
+                int boxIndex = (r / 3) * 3 + (c / 3);
+
+
+
+            }
+        }
+
+    }
+
 }
