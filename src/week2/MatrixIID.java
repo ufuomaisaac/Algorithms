@@ -266,7 +266,136 @@ public class MatrixIID {
 
 
     public void gameOfLife(int[][] board) {
+        int rows = board.length;
+        int cols = board[0].length;
 
+        // 1. First pass: Determine future states and encode them
+        for (int r = 0; r < rows; r++) {
+            for (int c = 0; c < cols; c++) {
+                int liveNeighbors = countLiveNeighbors(board, r, c);
+
+                // Rule 1 & 3: Live cell dies
+                // Rule 2: Live cell stays alive (State 3)
+                if (board[r][c] == 1) {
+                    if (liveNeighbors == 2 || liveNeighbors == 3) {
+                        board[r][c] = 3; // 1 -> 1
+                    }
+                    // Else stays 1, which means 1 -> 0
+                }
+                // Rule 4: Dead cell becomes live (State 2)
+                else {
+                    if (liveNeighbors == 3) {
+                        board[r][c] = 2; // 0 -> 1
+                    }
+                }
+            }
+        }
+
+        // 2. Second pass: Normalize states to 0s and 1s
+        for (int r = 0; r < rows; r++) {
+            for (int c = 0; c < cols; c++) {
+                // If state is 2 or 3, it's alive in the future.
+                if (board[r][c] == 2 || board[r][c] == 3) {
+                    board[r][c] = 1;
+                } else {
+                    board[r][c] = 0;
+                }
+            }
+        }
+    }
+
+    private int countLiveNeighbors(int[][] board, int r, int c) {
+        int count = 0;
+        // Scan the 3x3 area around the cell
+        for (int i = r - 1; i <= r + 1; i++) {
+            for (int j = c - 1; j <= c + 1; j++) {
+                // Skip the cell itself
+                if (i == r && j == c) continue;
+
+                // Check boundaries and original state
+                // Original live states were 1 or 3
+                if (i >= 0 && i < board.length && j >= 0 && j < board[0].length) {
+                    if (board[i][j] == 1 || board[i][j] == 3) {
+                        count++;
+                    }
+                }
+            }
+        }
+        return count;
+    }
+
+
+
+
+
+
+    //Come back to this later
+    public void gameOfLifee(int[][] board) {
+        // Pass 1: Encode the board with neighbor counts and original states
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length; j++) {
+                encode(board, i, j);
+            }
+        }
+
+        // Pass 2: Finalize the board state based on Conway's Rules
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length; j++) {
+                update(board, i, j);
+            }
+        }
+    }
+
+    /**
+     * Helper to store (OriginalState * 10) + NeighborCount in each cell
+     */
+    void encode(int[][] board, int i, int j) {
+        int aliveCount = 0;
+
+        // Check all 8 neighbors in a 3x3 grid around cell (i, j)
+        for (int r = -1; r <= 1; r++) {
+            for (int c = -1; c <= 1; c++) {
+                int neighR = i + r;
+                int neighC = j + c;
+
+                // Ensure neighbor is within board boundaries
+                if (neighR >= 0 && neighR < board.length
+                        && neighC >= 0 && neighC < board[0].length) {
+
+                    int neighVal = board[neighR][neighC];
+
+                    // If neighbor was already encoded, extract original state via division
+                    if (r == -1 || (r == 0 && c == -1)) {
+                        neighVal = neighVal / 10;
+                    }
+
+                    // Count as alive if original value was 1 (and not looking at itself)
+                    if (neighVal == 1 && !(r == 0 && c == 0)) {
+                        aliveCount++;
+                    }
+                }
+            }
+        }
+        // Encode: Tens place = original state; Ones place = live neighbor count
+        board[i][j] = board[i][j] * 10 + aliveCount;
+    }
+
+    /**
+     * Helper to decode the cell and apply the Game of Life rules
+     */
+    void update(int[][] board, int i, int j) {
+        int neighCount = board[i][j] % 10; // Extract ones digit
+        boolean isAlive = board[i][j] / 10 == 1; // Extract tens digit
+
+        if (isAlive && (neighCount < 2 || neighCount > 3)) {
+            board[i][j] = 0; // Rule 1 & 3: Under/Overpopulation
+        } else if (isAlive && (neighCount == 2 || neighCount == 3)) {
+            board[i][j] = 1; // Rule 2: Survival
+        } else if (!isAlive && neighCount == 3) {
+            board[i][j] = 1; // Rule 4: Reproduction
+        } else {
+            board[i][j] = isAlive ? 1 : 0; // Maintains current state if no rules apply
+        }
     }
 
 }
