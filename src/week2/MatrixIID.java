@@ -265,6 +265,17 @@ public class MatrixIID {
 
 
 
+    /**
+     * O(M*N) Time, O(1) Space: Game of Life (LC 289).
+     * * Strategy: In-place update using temporary states to track (Old, New).
+     * * 1. States: 0(D->D), 1(L->D), 2(D->L), 3(L->L).
+     * 2. Neighbor Count: Use (val == 1 || val == 3) to identify cells originally alive.
+     * 3. First Pass: Apply Conway's rules to set states 0-3.
+     * 4. Second Pass: Convert 2 and 3 to 1; convert 0 and 1 to 0.
+     * * This allows simultaneous update simulation without extra memory.
+     */
+    // Leetcode 289
+    // Game of life
     public void gameOfLife(int[][] board) {
         int rows = board.length;
         int cols = board[0].length;
@@ -329,6 +340,23 @@ public class MatrixIID {
 
 
 
+    /**
+     * O(1) Space In-Place Encoding Strategy:
+     * * 1. ENCODING PHASE:
+     * - We store two values in one integer: (Original_State * 10) + Neighbor_Count.
+     * - Example: 13 means (Originally Alive, 3 Neighbors). 02 means (Originally Dead, 2 Neighbors).
+     * - Critical: When counting neighbors, if a neighbor was already encoded (r < i or same row/prev col),
+     * we must use 'val / 10' to get its ORIGINAL state.
+     * * 2. DECODING/UPDATE PHASE:
+     * - Extraction: neighCount = val % 10; isAlive = val / 10 == 1.
+     * - Logic:
+     * - Rule 1 & 3: If alive and neighbors < 2 or > 3 -> 0 (Die).
+     * - Rule 2: If alive and neighbors == 2 or 3 -> 1 (Survive).
+     * - Rule 4: If dead and neighbors == 3 -> 1 (Reproduce).
+     * * Result: 0ms Runtime (Beats 100%) by avoiding extra matrix allocation.
+     */
+    // Leetcode 289
+    // Game of life
     //Come back to this later
     public void gameOfLifee(int[][] board) {
         // Pass 1: Encode the board with neighbor counts and original states
