@@ -1,6 +1,6 @@
 package week2;
 
-public class LinkedList {
+public class MyLinkedList {
 
     private int size;
     private Node head;
@@ -19,7 +19,7 @@ public class LinkedList {
     }
 
 
-    public  MyLinkedList() {
+    public MyLinkedList() {
         this.size = 0;
         this.head = null;
         this.tail = null;
@@ -102,7 +102,25 @@ public class LinkedList {
         }
 
         // Case 1: Deleting the Head
+        if(current == head) {
+            head = head.next;
+            if(head != null) head.prev = null;
+            else tail = null; //List become empty
+        }
 
+        // Case 2: Deleting the Tail
+        else if(current == tail) {
+            tail = tail.prev;
+            if (tail != null) tail.next = null;
+            else head = null; //List become empty
+        }
+
+        // Case 3: Deleting a Middle Node
+        else {
+            current.prev.next = current.next;
+            current.next.prev = current.prev;
+        }
+        size--;
     }
 
 
