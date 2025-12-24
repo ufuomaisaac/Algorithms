@@ -1,4 +1,6 @@
 package week2;
+
+
 /**
  * DOUBLY LINKED LIST RULES:
  * 1. Every 'add' or 'delete' in the middle requires updating TWO neighbors.
@@ -26,7 +28,6 @@ public class MyLinkedList {
             this.prev = null;
         }
     }
-
 
     public MyLinkedList() {
         this.size = 0;
@@ -99,7 +100,6 @@ public class MyLinkedList {
         current.prev.next = newNode;
         current.prev = newNode;
         size++;
-
     }
 
     public void deleteAtIndex(int index) {
@@ -131,8 +131,6 @@ public class MyLinkedList {
         }
         size--;
     }
-
-
 /**
  * Your MyLinkedList object will be instantiated and called as such:
  * MyLinkedList obj = new MyLinkedList();
