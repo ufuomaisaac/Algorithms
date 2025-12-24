@@ -1,5 +1,14 @@
 package week2;
+/**
+ * DOUBLY LINKED LIST RULES:
+ * 1. Every 'add' or 'delete' in the middle requires updating TWO neighbors.
+ * 2. 'head.prev' must always be null.
+ * 3. 'tail.next' must always be null.
+ * 4. Special care is needed when the list has only 1 node (head == tail).
+ */
 
+// Leetcode 707
+// Design Linked List
 public class MyLinkedList {
 
     private int size;
