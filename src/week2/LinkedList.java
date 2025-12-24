@@ -84,12 +84,24 @@ public class LinkedList {
             current = current.next;
         }
 
-
-
+        // Stitching the newNode between current.prev and current
+        newNode.next = current;
+        newNode.prev = current.prev;
+        current.prev.next = newNode;
+        current.prev = newNode;
+        size++;
 
     }
 
     public void deleteAtIndex(int index) {
+        if (index < 0 || index >= size) return;
+
+        Node current = head;
+        for(int i = 0; i < index; i++){
+            current = current.next;
+        }
+
+        // Case 1: Deleting the Head
 
     }
 
