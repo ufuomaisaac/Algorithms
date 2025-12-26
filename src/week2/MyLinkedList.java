@@ -161,7 +161,13 @@ class Solution {
 }
 
 
-
+/**
+ * THE LINKED LIST FRAMEWORK:
+ * 1. It is a "Singly" Linked List (only goes forward).
+ * 2. 'val' stores the integer.
+ * 3. 'next' is a recursive reference to the next ListNode object.
+ * 4. 'null' is the universal signal for "End of List".
+ */
 class ListNode {
     // The actual data stored in the node
     public int val;
