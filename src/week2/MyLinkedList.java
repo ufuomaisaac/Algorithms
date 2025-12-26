@@ -152,8 +152,34 @@ public class MyLinkedList {
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
+
 class Solution {
     public ListNode partition(ListNode head, int x) {
 
+        return new ListNode();
+    }
+}
+
+
+
+class ListNode {
+    // The actual data stored in the node
+    public int val;
+
+    // The reference (pointer) to the next node in the chain
+    public ListNode next;
+
+    // Constructor 1: Creates an empty node (usually val = 0)
+    public ListNode() {}
+
+    // Constructor 2: Creates a node with a specific value
+    public ListNode(int val) {
+        this.val = val;
+    }
+
+    // Constructor 3: Creates a node with a value AND connects it to another node
+    public ListNode(int val, ListNode next) {
+        this.val = val;
+        this.next = next;
     }
 }
