@@ -190,8 +190,28 @@ class Solution {
         ListNode lessHead = new ListNode();
         ListNode greaterHead = new ListNode();
 
+        // Pointers to the end of the two lists// Pointers to the end of the two lists
+        ListNode less = lessHead;
+        ListNode greater = greaterHead;
 
-        return new ListNode();
+        while(head != null) {
+            if(head.val < x) {
+                less.next = head;   // REUSE the actual node, don't create a new one
+                less = less.next;
+            } else {
+                greater.next = head;
+                greater = greater.next;
+            }
+            head = head.next;
+        }
+
+        // IMPORTANT: Prevent a cycle in the list
+        greater.next = null;
+
+        // Stitch the two lists together
+        less.next = greaterHead.next;
+
+        return lessHead.next;
     }
 }
 
