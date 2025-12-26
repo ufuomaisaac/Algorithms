@@ -154,7 +154,42 @@ public class MyLinkedList {
  */
 
 class Solution {
+
+    /**
+     * DETAILED ALGORITHM LOGIC: THE TWO-POINTER SEPARATION STRATEGY
+     * * 1. DUMMY INITIALIZATION:
+     * - We create two sentinel (dummy) nodes: 'lessHead' and 'greaterHead'.
+     * - These serve as fixed anchors so we never lose the starting point of our
+     * two sub-lists, especially if the original 'head' changes.
+     * * 2. TAIL TRACKING:
+     * - 'less' and 'greater' act as "active tails" or "write-heads."
+     * - They always point to the last confirmed node in their respective chains.
+     * * 3. SINGLE-PASS RE-LINKING (O(N) Time):
+     * - We traverse the original list node-by-node.
+     * - IF (val < x): We attach the current node to 'less.next' and move 'less' forward.
+     * - ELSE: We attach the current node to 'greater.next' and move 'greater' forward.
+     * - Crucially, we are RE-LINKING existing memory addresses, not creating new objects.
+     * * 4. PREVENTING CYCLES (The "Stray Pointer" Fix):
+     * - Because we are re-using nodes, the last node of the 'greater' list might
+     * still point to a node that was moved into the 'less' list.
+     * - We MUST set 'greater.next = null' to terminate the list and avoid an infinite loop.
+     * * 5. CONCATENATION:
+     * - We bridge the two lists by setting 'less.next = greaterHead.next'.
+     * - This effectively "stiches" the end of the small values to the start of the large values.
+     * * 6. RESULT:
+     * - We return 'lessHead.next', which skips our temporary dummy node and
+     * provides the head of the newly partitioned, stable list.
+     * * COMPLEXITY:
+     * - Time: O(N) -> Each node is visited once.
+     * - Space: O(1) -> Only 4 pointer references are used regardless of list size.
+     */
+    // LeetCode 86
+    // Partition List
     public ListNode partition(ListNode head, int x) {
+        // 1. Create two 'Dummy' nodes to act as anchors for our two lists.
+        ListNode lessHead = new ListNode();
+        ListNode greaterHead = new ListNode();
+
 
         return new ListNode();
     }
