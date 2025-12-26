@@ -213,6 +213,11 @@ class Solution {
 
         return lessHead.next;
     }
+
+
+    public int getSize(ListNode head) {
+
+    }
 }
 
 
