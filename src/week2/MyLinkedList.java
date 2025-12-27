@@ -1,5 +1,13 @@
 package week2;
 
+/**
+ * THE NAVIGATION RULE:
+ * 1. Indices are just numbers; Nodes are objects in memory.
+ * 2. To turn an index into a Node reference, you MUST traverse.
+ * 3. Array = Direct Access (O(1)).
+ * 4. Linked List = Sequential Access (O(N)).
+ */
+
 
 /**
  * DOUBLY LINKED LIST RULES:
@@ -135,12 +143,16 @@ public class MyLinkedList {
  * Your MyLinkedList object will be instantiated and called as such:
  * MyLinkedList obj = new MyLinkedList();
  * int param_1 = obj.get(index);
- * obj.addAtHead(val);
+ * objfor (int i = 0; i < size - k - 1; i++) {
+        newTail = newTail.next;
+    }.addAtHead(val);
  * obj.addAtTail(val);
  * obj.addAtIndex(index,val);
  * obj.deleteAtIndex(index);
  */
 }
+
+
 
 /**
  * Definition for singly-linked list.
@@ -152,7 +164,6 @@ public class MyLinkedList {
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
-
 class Solution {
 
     /**
@@ -215,10 +226,53 @@ class Solution {
     }
 
 
-    public int getSize(ListNode head) {
 
+    /**
+     * ROTATE RIGHT SUMMARY:
+     * 1. Transform the linear list into a circular list by connecting tail to head.
+     * 2. Calculate the split position using (size - k % size - 1).
+     * 3. Traverse to this position to find the 'newTail'.
+     * 4. The 'newHead' is the node after 'newTail'.
+     * 5. Sever the connection at 'newTail.next' to restore a linear structure.
+     */
+    // Leetcode 61
+    // Rotate List
+    public ListNode rotateRight(ListNode head, int k) {
+        // 1. Edge cases
+        if(head == null || head.next == null || k == 0) return head;
+
+        // 2. Measure the list and identify the last node simultaneously
+        ListNode lastNode = head;
+        int size = 1;
+        while(lastNode.next != null) {
+            lastNode = lastNode.next;
+            size++;
+        }
+
+        // 3. Handle rotation math
+        k = k % size;
+        if(k == 0) return head;
+
+        // 4. THE WELD: Connect tail to head to form a ring
+        lastNode.next = head;
+
+        // 5. THE NAVIGATION: Use the index math to find the new split point
+        // We need to move (size - k - 1) times from the head
+        ListNode newTail = head;
+        for(int i = 0; i < size - k - 1; i++){
+            newTail = newTail.next;
+        }
+
+        // 6. THE BREAK: Define new head and sever the ring
+        ListNode newHead =newTail.next;
+        newTail.next = null;
+
+        return newHead;
     }
+
+
 }
+
 
 
 /**
