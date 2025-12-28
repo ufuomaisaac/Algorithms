@@ -287,7 +287,33 @@ class Solution {
     // Leetcode 2
     // Add two numbers
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        // 1. DUMMY ANCHOR: Use a sentinel node to easily return the result head.
+        ListNode dummyHead = new ListNode(0);
+        ListNode current = dummyHead;
+        int carry = 0;
 
+        // 2. UNIFIED LOOP: Handles both lists and the final carry in one go.
+        while (l1 != null || l2 != null || carry != 0) {
+            // Extract values: Use 0 if the list has already reached the end.
+            int val1 = (l1 != null)? l1.val : 0;
+            int val2 = (l2 != null)? l2.val : 0;
+
+            // Compute current sum and new carry.
+            int sum  = val1 + val2 + carry;
+            carry = sum / 10;
+            int digit = sum % 10;
+
+            // 3. ATTACH: Create a new node for the single digit.
+            current.next = new ListNode(digit);
+            current = current.next;
+
+            // 4. ADVANCE: Move to the next nodes if they exist.
+            if (l1 != null) l1 = l1.next;
+            if (l2 != null) l2 = l2.next;
+
+        }
+        // 5. RETURN: Skip the dummy head to get the actual result.
+        return dummyHead.next;
     }
 }
 
