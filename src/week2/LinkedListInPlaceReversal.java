@@ -68,4 +68,9 @@ public class LinkedListInPlaceReversal {
         return dummy.next;
 
     }
+
+    public ListNode reverseKGroup(ListNode head, int k) {
+
+    }
+}
 }
