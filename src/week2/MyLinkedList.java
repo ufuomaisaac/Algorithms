@@ -315,7 +315,59 @@ class Solution {
         // 5. RETURN: Skip the dummy head to get the actual result.
         return dummyHead.next;
     }
+
+
+
+    /**
+     * FLATTEN MULTILEVEL LIST SUMMARY:
+     * 1. ITERATIVE SCAN: Traverse the list using a single pointer 'p'.
+     * 2. CHILD DETECTION: When 'p.child' is found, pause the main traversal.
+     * 3. TAIL SEARCH: Find the last node of the child branch.
+     * 4. RE-WIRING:
+     * - Connect Child-Tail to p.next (Bridge the gap forward).
+     * - Connect p.next to Child-Tail (Bridge the gap backward).
+     * - Connect p to p.child (Bring the branch up to the main level).
+     * - Set p.child to null (Crucial: convert to standard doubly list).
+     * 5. RESUME: Continue moving 'p' forward. It will eventually process the
+     * nodes that were just brought up from the child level.
+     */
+    // LeetCode 430
+    // Flatten a multilevel Doubly Linkedlist
+    public Node flatten(Node head) {
+
+    }
 }
+
+/**
+ * NODE CLASS RECAP:
+ * 1. Standard Singly: val, next.
+ * 2. Standard Doubly: val, next, prev.
+ * 3. Multilevel Doubly: val, next, prev, child.
+ * * *Note: In flattening, we convert Type 3 into Type 2
+ * by reassigning 'child' addresses to 'next' slots.*
+ */
+class Node {
+    public int val;      // The data stored in the node
+    public Node prev;    // Pointer to the previous node (Backward)
+    public Node next;    // Pointer to the next node (Forward)
+    public Node child;   // Pointer to a sub-level list (Downward)
+
+    // Default Constructor
+    public Node() {}
+
+    // Constructor to initialize a node with a value
+    public Node(int _val) {
+        val = _val;
+    }
+
+    // Full Constructor for complex initialization
+    public Node(int _val, Node _prev, Node _next, Node _child) {
+        val = _val;
+        prev = _prev;
+        next = _next;
+        child = _child;
+    }
+};
 
 
 
