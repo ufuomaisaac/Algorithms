@@ -331,10 +331,63 @@ class Solution {
      * 5. RESUME: Continue moving 'p' forward. It will eventually process the
      * nodes that were just brought up from the child level.
      */
+
+    /**
+     * WHY NULLIFY THE CHILD?
+     * 1. CLEANUP: A flattened list, by definition, has no vertical branches.
+     * 2. CONSISTENCY: Standard Doubly Linked List iterators only look at .next and .prev.
+     * 3. AMBIGUITY: Leaving .child populated creates two 'next' paths for one node.
+     * 4. SUCCESS: Removing the pointer 'finalizes' the move of the sub-list
+     * into the main sequence.
+     */
+
+    /**
+     * Logic: Iterative Splice Strategy
+     * Time Complexity: O(N) - Every node is processed once.
+     * Space Complexity: O(1) - No recursion stack or extra data structures used.
+     */
+
+
     // LeetCode 430
     // Flatten a multilevel Doubly Linkedlist
     public Node flatten(Node head) {
+        //Guide Clause
+        if(head == null) return head;
 
+        Node p = head;
+        while(p != null) {
+            // CASE 1: No child present. Just move to the next node.
+            if(p.child == null) {
+                p = p.next;
+                continue;
+            }
+
+            // CASE 2: Child found. We must "splice" the child list into the main line.
+            // 1. Find the tail of the child sub-list
+            Node childTail = p.child;
+            while(childTail.next != null) {
+                childTail = childTail.next;
+            }
+
+            // 2. Connect childTail to the existing p.next (The "Back Stitch")
+            childTail.next = p.next;
+            if(p.next != null) {
+                p.next.prev = childTail;
+            }
+
+            // 3. Connect p to the childHead (The "Front Stitch")
+            p.next = p.child;
+            p.child.prev = p;
+
+            // 4. CRITICAL: Remove the child pointer to finish the flattening
+            p.child = null;
+
+            // 5. Move forward.
+            // Because p.next is now the former child, we will naturally
+            // flatten any nested children inside that list as we go.
+            p = p.next;
+        }
+        return head;
     }
 }
 
