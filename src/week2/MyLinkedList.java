@@ -271,6 +271,24 @@ class Solution {
     }
 
 
+    /**
+     * ADD TWO NUMBERS SUMMARY:
+     * 1. REVERSE ORDER ADVANTAGE: Because lists are reversed, the heads are the
+     * least significant digits. We can add naturally from left to right.
+     * 2. DUMMY NODE: Use a dummy head to simplify building the result list.
+     * 3. CARRY LOGIC:
+     * - New Digit = (Sum of nodes + carry) % 10.
+     * - New Carry = (Sum of nodes + carry) / 10.
+     * 4. PADDING: If one list ends before the other, treat its value as 0.
+     * 5. FINAL CARRY: The while loop condition 'carry != 0' ensures that an
+     * extra node is created if the last addition results in a carry (e.g., 9 + 1 = 10).
+     * 6. COMPLEXITY: Time O(max(N, M)), Space O(max(N, M)) to store the new list.
+     */
+    // Leetcode 2
+    // Add two numbers
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+
+    }
 }
 
 
