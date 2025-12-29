@@ -70,7 +70,36 @@ public class LinkedListInPlaceReversal {
     }
 
     public ListNode reverseKGroup(ListNode head, int k) {
+        // 1. THE SCOUT: Find the (k+1)-th node to see if we have enough to reverse
+        ListNode curr = head;
+        int count = 0;
 
+        while(curr != null && count != k) {
+            curr = curr.next;
+            count++;
+        }
+
+        // 2. THE DECISION: If we found k nodes, reverse them
+        if(count == k){
+            // LEAP OF FAITH: Recursively solve the rest of the list first.
+            // 'curr' will be the head of the finished "future" part.
+            curr = reverseKGroup(curr, k);
+
+            // 3. THE REVERSAL: Standard "pre-pending" loop
+            // We move k nodes from the 'head' list to the 'curr' list.
+
+            while(count-- > 0) {
+                ListNode temp = head.next;  // Save the next node in the direct part
+                head.next = curr;           // Link current head back to the reversed part
+                curr = head;                // Move the "reversed head" marker to this node
+                head = temp;           // Advance the "direct head" to the next node
+            }
+
+            // 4. THE UPDATE: 'curr' is now the new head of this reversed block
+            curr = head;
+        }
+        // 5. THE RETURN: Returns the new head (if reversed) or original head (if not)
+        return head;
     }
-}
+
 }
