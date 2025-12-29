@@ -23,8 +23,6 @@ public class LinkedListInPlaceReversal {
      * 5. RESULT: Each loop iteration "shuttles" one node from the right of 'curr'
      * to the right of 'prev'.
      */
-    // Leetcode 92
-    // Reversed Linked List 11
 
     /**
      * THE PROBLEM IN A NUTSHELL:
@@ -35,6 +33,9 @@ public class LinkedListInPlaceReversal {
      * 4. Complexity requirement: Do it in a single pass (O(N)) and
      * without extra memory (O(1)).
      */
+
+    // Leetcode 92
+    // Reversed Linked List 11
     public ListNode reverseBetween(ListNode head, int left, int right) {
 
         // 1. THE GUARD: Dummy node handles cases where 'left' is the head (index 1)
@@ -142,5 +143,4 @@ public class LinkedListInPlaceReversal {
         // 5. THE RETURN: Returns the new head (if reversed) or original head (if not)
         return head;
     }
-
 }
