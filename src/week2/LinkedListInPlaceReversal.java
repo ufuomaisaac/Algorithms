@@ -69,6 +69,47 @@ public class LinkedListInPlaceReversal {
 
     }
 
+
+
+    /**
+     * REVERSE K-GROUP RECAP (Direct vs. Reversed Logic):
+     * 1. SCOUTING: Scan 'k' nodes. If count < k, return 'head' as-is.
+     * * 2. POST-ORDER PROCESSING:
+     * - We call reverseKGroup(curr, k) first.
+     * - This returns the head of the "Reversed" section (the future of the list).
+     * * 3. THE REVERSAL SWAP (The "Direct-to-Reversed" Transfer):
+     * - 'head' points to the "Direct" part (nodes still in their original order).
+     * - 'curr' points to the "Reversed" part (nodes already flipped and connected).
+     * * Inside the loop:
+     * - tmp = head.next  // Save the next node in the Direct part.
+     * - head.next = curr // Takes the first Direct node and pins it to the
+     * // front of the Reversed part.
+     * - curr = head      // The "Reversed" boundary grows to include this node.
+     * - head = tmp       // Move the "Direct" pointer forward to the next node.
+     * * 4. ATTACHMENT:
+     * Because 'curr' originally held the result of the recursive call, the
+     * original first node of your current group automatically points to the
+     * head of the next group.
+     */
+
+                //OR
+
+    /**
+     * REVERSE K-GROUP RECAP:
+     * 1. SCOUTING: Always check if k nodes exist. If head is null or count < k,
+     * just return head (Base Case).
+     * 2. POST-ORDER PROCESSING: By calling the recursion BEFORE the reversal loop,
+     * we ensure the "tail" of the list is fixed before we attach the "head."
+     * 3. THE REVERSAL SWAP:
+     * - tmp = head.next  (Hold the next node)
+     * - head.next = curr (Reverse the pointer)
+     * - curr = head      (Shift the reversed boundary)
+     * - head = tmp       (Move to next node)
+     * 4. ATTACHMENT: The first node of your group automatically points to the
+     * head of the next group because 'curr' starts as that head.
+     */
+    // Leetcode 25
+    // Reverse Nodes in K-Group
     public ListNode reverseKGroup(ListNode head, int k) {
         // 1. THE SCOUT: Find the (k+1)-th node to see if we have enough to reverse
         ListNode curr = head;
