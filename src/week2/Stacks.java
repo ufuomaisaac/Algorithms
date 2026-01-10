@@ -1,8 +1,46 @@
 package week2;
 
-import java.util.Stack;
+import java.util.Stack; // 1. TRACK LAST INDEX: Consistent with your first example
 
 public class Stacks {
+
+    public String removeDuplicateLetters(String s) {
+        // 1. TRACK LAST INDEX: Consistent with your first example
+        int [] lastIndex = new int[26];
+        for (int i = 0; i < s.length(); i++) {
+            lastIndex[ s.charAt(i) - 'a'] = i;
+        }
+
+        // 2. TOOLS: Consistent with 'seen' and 'st' naming
+        boolean[] seen = new boolean[26];
+        Stack<Character> stack = new Stack<>();
+
+        for(int i = 0; i < s.length(); i++){
+            char currChar = s.charAt(i);
+            int curr = currChar - 'a';
+
+            // 3. SKIP IF SEEN; pick only one instance of the char
+            if(seen[curr]) continue;
+
+            // 4. BULLY MECHANIC: Monotonic Stack Logic
+            // While the top is "bigger" than the current AND it appears again
+            while(!stack.isEmpty() && stack.peek() > currChar && i < lastIndex[stack.peek() - 'a']){
+                char removed = stack.pop();
+                seen[removed - 'a'] = false; // Mark as unseen so it can be re-added later
+            }
+
+            stack.push(currChar);
+            seen[curr]= true;
+        }
+
+        // 5. BUILD RESULT; Using the StringBuilder for O(N) construction
+        StringBuilder sb = new StringBuilder();
+        for(char c : stack) {
+            sb.append(c);
+        }
+        return sb.toString();
+
+    }
 }
 
 /**
