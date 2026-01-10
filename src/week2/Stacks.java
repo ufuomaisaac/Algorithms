@@ -4,6 +4,16 @@ import java.util.Stack; // 1. TRACK LAST INDEX: Consistent with your first examp
 
 public class Stacks {
 
+    /**
+     * CONSISTENT REMOVE DUPLICATE LETTERS RECAP:
+     * 1. PRE-PROCESS: Build 'lastIndex' to know the deadline for each char.
+     * 2. SEEN ARRAY: Prevent duplicate processing (maintain uniqueness).
+     * 3. MONOTONIC STACK:
+     * - IF curr < st.peek() AND st.peek() appears later:
+     * - POP st.peek() AND set seen[peeked] = false.
+     * 4. RESULT: The stack represents the smallest alphabetical string.
+     */
+    // Leetcode 316: Remove Duplicate Letters
     public String removeDuplicateLetters(String s) {
         // 1. TRACK LAST INDEX: Consistent with your first example
         int [] lastIndex = new int[26];
