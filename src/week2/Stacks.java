@@ -81,7 +81,17 @@ public class Stacks {
      * between the numbers we want to calculate and the operators (+, -, *, /)
      * that tell us HOW to calculate.
      */
-    //
+
+    /**
+     * REFINED CALCULATOR RECAP:
+     * 1. SCAN: Move through the string char by char.
+     * 2. ACCUMULATE: Build 'currentNum' as long as you see digits.
+     * 3. EXECUTE: When an operator appears, apply the PREVIOUS operator
+     * to the current number and the stack top.
+     * 4. SUM: At the end, simply add everything remaining in the stack.
+     * 5. SPACE: O(N) in the worst case (all additions).
+     */
+    // Leetcode 227: Basic Calculator
     public int calculate(String s) {
         if(s == null ||s.isEmpty()) return 0;
 
@@ -93,7 +103,41 @@ public class Stacks {
 
         for(int i = 0; i < n; i++) {
             char c = s.charAt(i);
+
+            // 1. BUILD THE NUMBER
+            if (Character.isDigit(c)) {
+                currentNum = currentNum * 10 + (c - '0');
+            }
+
+            // 2. PROCESS OPERATION
+            // Trigger if current char is an operator OR we reached the end
+            if(!Character.isDigit(c) && c != ' ' || i == n - 1) {
+                switch (operation) {
+                    case '+':
+                        stack.push(currentNum);
+                        break;
+                    case '-':
+                        stack.push(-currentNum);
+                        break;
+                    case '*':
+                        stack.push(stack.pop() * currentNum);
+                        break;
+                    case '/':
+                        stack.push(stack.pop() / currentNum);
+                        break;
+                }
+                // Reset for the next number
+                operation = c;
+                currentNum = 0;
+            }
         }
+
+        // 3. FINAL SUMMATION
+        int result = 0;
+        while (!stack.isEmpty()) {
+            result += stack.pop();
+        }
+        return result;
 
     }
 }
