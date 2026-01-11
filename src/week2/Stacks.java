@@ -140,7 +140,15 @@ public class Stacks {
         return result;
 
     }
+
+
+    public int longestValidParentheses(String s) {
+        return 0;
+
+    }
+
 }
+
 
 /**
  * DOUBLE-PUSH INTUITION:
