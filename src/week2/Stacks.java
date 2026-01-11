@@ -1,6 +1,17 @@
 package week2;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Stack; // 1. TRACK LAST INDEX: Consistent with your first example
+
+/**
+ * KEY TAKEAWAYS:
+ * 1. DEQUE: Always use Deque/ArrayDeque for stack operations in Java.
+ * It is faster and follows better design principles than the old Stack class.
+ * 2. ISDIGIT: This method is a clean, readable way to distinguish
+ * between the numbers we want to calculate and the operators (+, -, *, /)
+ * that tell us HOW to calculate.
+ */
 
 public class Stacks {
 
@@ -49,6 +60,40 @@ public class Stacks {
             sb.append(c);
         }
         return sb.toString();
+
+    }
+
+
+
+    /**
+     * WHY WE TRANSFORM:
+     * 1. String "123" is just a list of 3 separate symbols.
+     * 2. We need to convert symbols to math values using ASCII subtraction (- '0').
+     * 3. We use (* 10) to shift digits to the left so that "1", "2", and "3"
+     * combine to form the single integer 123.
+     */
+
+    /**
+     * KEY TAKEAWAYS:
+     * 1. DEQUE: Always use Deque/ArrayDeque for stack operations in Java.
+     * It is faster and follows better design principles than the old Stack class.
+     * 2. ISDIGIT: This method is a clean, readable way to distinguish
+     * between the numbers we want to calculate and the operators (+, -, *, /)
+     * that tell us HOW to calculate.
+     */
+    //
+    public int calculate(String s) {
+        if(s == null ||s.isEmpty()) return 0;
+
+        //Use Deque for better performance than stacks
+        Deque<Integer> stack = new ArrayDeque<>();
+        int currentNum = 0;
+        char operation = '+';  // Tracks the operation BEFORE the number
+        int n = s.length();
+
+        for(int i = 0; i < n; i++) {
+            char c = s.charAt(i);
+        }
 
     }
 }
